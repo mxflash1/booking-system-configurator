@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Website Business - Navigation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 50px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .header p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .nav-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-card-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .nav-card-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #667eea;
+    }
+
+    .nav-card-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .nav-card.client {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .nav-card.client .nav-card-title {
+      color: white;
+    }
+
+    .nav-card.client .nav-card-desc {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .docs-section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 30px;
+    }
+
+    .docs-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #667eea;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .doc-link {
+      display: block;
+      padding: 15px 20px;
+      background: #f7f7f7;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .doc-link:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    .doc-link-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .doc-link-desc {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .folder-structure {
+      background: #1a1a2e;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Booking Website Business</h1>
+      <p>Professional, organized, ready to launch!</p>
+    </div>
+
+    <div class="nav-grid">
+      <!-- Client Landing Page -->
+      <a href="client-files/index.html" class="nav-card client">
+        <div class="nav-card-icon">🌐</div>
+        <div class="nav-card-title">Client Landing Page</div>
+        <div class="nav-card-desc">
+          <strong>PUBLIC:</strong> Share this with potential clients. They fill out the form and order a custom booking website.
+        </div>
+      </a>
+
+      <!-- Admin Dashboard -->
+      <a href="admin-files/admin-dashboard.html" class="nav-card">
+        <div class="nav-card-icon">📊</div>
+        <div class="nav-card-title">Admin Dashboard</div>
+        <div class="nav-card-desc">
+          <strong>PRIVATE:</strong> View and manage all client orders. Track status, click to build websites.
+        </div>
+      </a>
+    </div>
+
+    <!-- Documentation Section -->
+    <div class="docs-section">
+      <h2 class="docs-title">📚 Documentation & Guides</h2>
+      
+      <div class="docs-grid">
+        <a href="docs/OVERVIEW.md" class="doc-link">
+          <div class="doc-link-title">🎯 Overview</div>
+          <div class="doc-link-desc">Quick reference guide</div>
+        </a>
+
+        <a href="docs/SMART-TEMPLATE-WORKFLOW.md" class="doc-link">
+          <div class="doc-link-title">📋 Complete Workflow</div>
+          <div class="doc-link-desc">Step-by-step guide</div>
+        </a>
+
+        <a href="docs/FIREBASE-SETUP-GUIDE.md" class="doc-link">
+          <div class="doc-link-title">🔥 Firebase Setup</div>
+          <div class="doc-link-desc">Database configuration (15 min)</div>
+        </a>
+
+        <a href="README.md" class="doc-link">
+          <div class="doc-link-title">📄 Master README</div>
+          <div class="doc-link-desc">Full system overview</div>
+        </a>
+      </div>
+
+      <!-- Folder Structure -->
+      <div class="folder-structure">
+📁 booking-system-configurator/
+├── 📄 index.html               ← You are here!
+├── 📄 README.md                ← Master documentation
+│
+├── 📁 client-files/            ← PUBLIC (Client-facing)
+│   └── index.html              → Landing page (share this!)
+│
+├── 📁 admin-files/             ← PRIVATE (Your tools)
+│   └── admin-dashboard.html    → View orders
+│
+├── 📁 assets/                  ← Shared resources
+│   ├── styles.css              → Styling
+│   └── generator.js            → Logic
+│
+├── 📁 docs/                    ← Documentation
+│   ├── OVERVIEW.md             → Quick reference
+│   ├── SMART-TEMPLATE-WORKFLOW.md → Complete guide
+│   └── FIREBASE-SETUP-GUIDE.md → Firebase setup
+│
+├── 📁 functions/               ← Email automation
+├── 📁 template/                ← Website templates
+└── 📁 output/                  ← Generated sites
+      </div>
+
+      <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 12px; border: 2px solid #ffc107;">
+        <strong style="color: #856404;">⚡ First Time Here?</strong>
+        <p style="color: #856404; margin-top: 8px; line-height: 1.6;">
+          1. Open <a href="docs/OVERVIEW.md" style="color: #667eea; font-weight: bold;">OVERVIEW.md</a><br>
+          2. Follow the workflow guide<br>
+          3. Come back here to navigate your business!
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

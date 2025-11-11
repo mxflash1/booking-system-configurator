@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking System Generator - Create Beautiful Booking Sites in Minutes</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <style>
+    /* Landing page takes full screen */
+    .landing-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .landing-content {
+      max-width: 900px;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .landing-title {
+      font-size: 64px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+      line-height: 1.1;
+    }
+
+    .landing-subtitle {
+      font-size: 24px;
+      opacity: 0.95;
+      margin-bottom: 40px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .landing-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .landing-stat {
+      text-align: center;
+    }
+
+    .landing-stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .landing-stat-label {
+      font-size: 14px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .build-button {
+      display: inline-block;
+      padding: 20px 50px;
+      background: white;
+      color: #667eea;
+      font-size: 20px;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .build-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .build-button:active {
+      transform: translateY(-1px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Main configurator section */
+    .configurator-section {
+      background: #0f0f23;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Landing Page -->
+  <div class="landing-page" id="landingPage">
+    <div class="landing-content">
+      <h1 class="landing-title">🚀 Create Stunning Booking Sites in Minutes</h1>
+      <p class="landing-subtitle">
+        Professional booking websites for barbershops, salons & service businesses.<br>
+        No coding required. Fully customizable. Deploy-ready.
+      </p>
+      
+      <div class="landing-stats">
+        <div class="landing-stat">
+          <span class="landing-stat-number">5 min</span>
+          <span class="landing-stat-label">Setup Time</span>
+        </div>
+        <div class="landing-stat">
+          <span class="landing-stat-number">8 Files</span>
+          <span class="landing-stat-label">Generated</span>
+        </div>
+        <div class="landing-stat">
+          <span class="landing-stat-number">100%</span>
+          <span class="landing-stat-label">Customizable</span>
+        </div>
+      </div>
+
+      <button type="button" class="build-button" onclick="scrollToConfigurator()">
+        🎨 Build My Website
+      </button>
+    </div>
+
+    <div class="scroll-indicator">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Configurator Section -->
+  <div class="configurator-section" id="configuratorSection">
+    <div class="container">
+      <div class="main-layout">
+        
+        <!-- Configuration Panel -->
+        <div class="config-panel">
+          <div class="config-header">
+            <h2>⚙️ Configure Your Site</h2>
+            <p>Fill in your details and watch the live preview update</p>
+          </div>
+
+          <!-- Business Information -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">🏢</span>
+              <h3 class="section-title">Business Information</h3>
+            </div>
+            <div class="section-description">
+              This information will appear on your website and in meta tags for SEO.
+            </div>
+            
+              <div class="form-group">
+              <label class="form-label">
+                Business Name <span class="label-required">*</span>
+              </label>
+              <input type="text" class="form-input" id="businessName" placeholder="Joe's Barbershop" required>
+              <span class="form-hint">This will be your main website title</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Location <span class="label-required">*</span>
+              </label>
+              <select class="form-select" id="location" required>
+                <optgroup label="🇦🇺 Australia">
+                  <option value="Brisbane, Australia">Brisbane</option>
+                  <option value="Sydney, Australia">Sydney</option>
+                  <option value="Melbourne, Australia">Melbourne</option>
+                  <option value="Perth, Australia">Perth</option>
+                  <option value="Adelaide, Australia">Adelaide</option>
+                  <option value="Gold Coast, Australia">Gold Coast</option>
+                  <option value="Canberra, Australia">Canberra</option>
+                </optgroup>
+                <optgroup label="🇺🇸 United States">
+                  <option value="New York, USA">New York</option>
+                  <option value="Los Angeles, USA">Los Angeles</option>
+                  <option value="Chicago, USA">Chicago</option>
+                  <option value="Houston, USA">Houston</option>
+                  <option value="Miami, USA">Miami</option>
+                  <option value="San Francisco, USA">San Francisco</option>
+                  <option value="Seattle, USA">Seattle</option>
+                </optgroup>
+                <optgroup label="🇬🇧 United Kingdom">
+                  <option value="London, UK">London</option>
+                  <option value="Manchester, UK">Manchester</option>
+                  <option value="Birmingham, UK">Birmingham</option>
+                  <option value="Edinburgh, UK">Edinburgh</option>
+                </optgroup>
+                <optgroup label="🇨🇦 Canada">
+                  <option value="Toronto, Canada">Toronto</option>
+                  <option value="Vancouver, Canada">Vancouver</option>
+                  <option value="Montreal, Canada">Montreal</option>
+                </optgroup>
+                <optgroup label="🇲🇽 Mexico">
+                  <option value="Chiapas, Mexico">Chiapas</option>
+                  <option value="Mexico City, Mexico">Mexico City</option>
+                  <option value="Guadalajara, Mexico">Guadalajara</option>
+                  <option value="Monterrey, Mexico">Monterrey</option>
+                  <option value="Cancún, Mexico">Cancún</option>
+                  <option value="Tijuana, Mexico">Tijuana</option>
+                </optgroup>
+                <optgroup label="🌍 Other">
+                  <option value="custom">✏️ Enter Custom Location</option>
+                </optgroup>
+              </select>
+              <input type="text" class="form-input" id="customLocation" placeholder="Your City, Country" style="display: none; margin-top: 10px;">
+              <span class="form-hint">City location for local SEO (exact address kept private until booking)</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Timezone <span class="label-required">*</span>
+              </label>
+              <select class="form-select" id="timezone" required>
+                  <option value="Australia/Brisbane">Australia/Brisbane (AEST)</option>
+                  <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
+                  <option value="Australia/Melbourne">Australia/Melbourne (AEST)</option>
+                  <option value="Australia/Perth">Australia/Perth (AWST)</option>
+                  <option value="America/New_York">America/New_York (EST)</option>
+                  <option value="America/Los_Angeles">America/Los_Angeles (PST)</option>
+                  <option value="Europe/London">Europe/London (GMT)</option>
+                  <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                </select>
+              <span class="form-hint">Used for booking time slots</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Currency Symbol <span class="label-required">*</span>
+              </label>
+              <input type="text" class="form-input" id="currency" placeholder="$" maxlength="3" required>
+              <span class="form-hint">e.g., $, €, £, ¥</span>
+              </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                Tagline/Slogan
+              </label>
+              <input type="text" class="form-input" id="tagline" placeholder="Clean cuts. No wait." maxlength="100">
+              <span class="form-hint">Short catchy phrase that appears under your business name (e.g., "Clean cuts. No wait.", "Your style, our expertise")</span>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">📞</span>
+              <h3 class="section-title">Contact Information</h3>
+            </div>
+            <div class="section-description">
+              How customers can reach the business. Phone number will be used for booking confirmations.
+            </div>
+            
+              <div class="form-group">
+              <label class="form-label">
+                Phone Number <span class="label-required">*</span>
+              </label>
+              <input type="tel" class="form-input" id="phone" placeholder="+61 402 098 123" required>
+              <span class="form-hint">Include country code for international support</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Email Address <span class="label-required">*</span>
+              </label>
+              <input type="email" class="form-input" id="email" placeholder="contact@business.com" required>
+              <span class="form-hint">For booking notifications and customer inquiries</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Admin Panel Secret Code <span class="label-required">*</span>
+              </label>
+              <input type="text" class="form-input" id="adminUrl" placeholder="admin_secret_abc123" required>
+              <span class="form-hint">🔒 <strong>Secret URL path for admin access.</strong> Your booking system includes a complete admin dashboard where you can view all bookings, manage availability, and track payments. Only accessible at: <code>yoursite.com/<strong>THIS_CODE</strong></code></span>
+            </div>
+
+            <div class="warning-card">
+              <div class="warning-card-title">
+                <span>⚠️</span> Keep This Secret!
+              </div>
+              <div class="info-card-content" style="color: #fca5a5;">
+                This code is the ONLY way to access your admin dashboard. Don't share it publicly. Choose something random like "admin_xyz789" not "admin"
+              </div>
+            </div>
+          </div>
+
+          <!-- Branding & Design -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">🎨</span>
+              <h3 class="section-title">Branding & Design</h3>
+                </div>
+            <div class="section-description">
+              Customize the look and feel of your site. Colors will be applied throughout the interface, matching the preview below.
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Primary Color <span class="label-required">*</span>
+                <span class="label-help" title="Main brand color for buttons, headers, and accents">ℹ️</span>
+              </label>
+                <div class="color-input-group">
+                <input type="color" class="color-preview" id="primaryColor" value="#CE1126">
+                <input type="text" class="form-input color-input-text" id="primaryColorText" value="#CE1126" placeholder="#CE1126">
+                </div>
+              <span class="form-hint">Used for buttons, headers, titles (h2 tags), and main accents</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Secondary Color <span class="label-required">*</span>
+                <span class="label-help" title="Secondary color for CTA buttons and success states">ℹ️</span>
+              </label>
+                <div class="color-input-group">
+                <input type="color" class="color-preview" id="secondaryColor" value="#006847">
+                <input type="text" class="form-input color-input-text" id="secondaryColorText" value="#006847" placeholder="#006847">
+                </div>
+              <span class="form-hint">Used for the main "Book Now" button and success states</span>
+              </div>
+              
+              <div class="form-group">
+              <label class="form-label">
+                Background Color <span class="label-required">*</span>
+              </label>
+              <div class="color-input-group">
+                <input type="color" class="color-preview" id="backgroundColor" value="#000000">
+                <input type="text" class="form-input color-input-text" id="backgroundColorText" value="#000000" placeholder="#000000">
+              </div>
+              <span class="form-hint">Main background color (dark themes work best for the retro aesthetic)</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">
+                Font Family <span class="label-required">*</span>
+              </label>
+              <select class="form-select" id="fontFamily">
+                <option value="Press Start 2P, monospace" style="font-family: monospace;">Press Start 2P (Retro Gaming - Default)</option>
+                <option value="Poppins, sans-serif" style="font-family: 'Poppins', sans-serif;">Poppins (Modern & Clean)</option>
+                <option value="Inter, sans-serif" style="font-family: 'Inter', sans-serif;">Inter (Professional)</option>
+                <option value="Roboto, sans-serif" style="font-family: 'Roboto', sans-serif;">Roboto (Google's Choice)</option>
+                <option value="Open Sans, sans-serif" style="font-family: 'Open Sans', sans-serif;">Open Sans (Readable)</option>
+                <option value="Montserrat, sans-serif" style="font-family: 'Montserrat', sans-serif;">Montserrat (Bold)</option>
+                <option value="Lato, sans-serif" style="font-family: 'Lato', sans-serif;">Lato (Elegant)</option>
+              </select>
+              <span class="form-hint">Font shown in actual typeface above. Default matches the retro gaming aesthetic of the original design.</span>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">✂️</span>
+              <h3 class="section-title">Services</h3>
+            </div>
+            <div class="section-description">
+              Add the services your business offers. Each service will appear in the booking interface.
+            </div>
+            
+            <div class="services-list" id="servicesList">
+              <!-- Services will be added dynamically -->
+            </div>
+            
+            <button type="button" class="btn btn-add" onclick="addService()">
+              <span>➕</span> Add Service
+            </button>
+          </div>
+
+          <!-- Features -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">⚡</span>
+              <h3 class="section-title">Features</h3>
+            </div>
+            <div class="section-description">
+              Enable powerful features to enhance your booking experience.
+            </div>
+            
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="featureAuth" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">👤 User Authentication & Accounts</div>
+                  <div class="checkbox-description">Let customers create accounts, view booking history, and auto-fill their information. Increases repeat bookings by 60%. Users can log in with phone + password.</div>
+                </div>
+                </label>
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="featureLeaderboard" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">🏆 Client Loyalty Leaderboard</div>
+                  <div class="checkbox-description">Gamify your business! Show top customers and encourage repeat visits. Builds community and increases retention. Shows "Most Loyal Clients" section on homepage.</div>
+                </div>
+                </label>
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="featureCalendar" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">📅 Add to Calendar</div>
+                  <div class="checkbox-description">Customers can add bookings directly to Google Calendar, Apple Calendar, or Outlook. Reduces no-shows by 40%.</div>
+                </div>
+                </label>
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="featureDeposits">
+                <div class="checkbox-content">
+                  <div class="checkbox-title">💳 Require Deposits</div>
+                  <div class="checkbox-description">Require upfront payment or deposits to confirm bookings. Perfect for high-value services or frequent no-shows.</div>
+                </div>
+                </label>
+            </div>
+          </div>
+
+          <!-- Payment Options -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">💰</span>
+              <h3 class="section-title">Payment Options</h3>
+            </div>
+            <div class="section-description">
+              Choose which payment methods to accept. Multiple options increase conversion rates.
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="paymentCash" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">💵 Cash</div>
+                  <div class="checkbox-description">Accept cash payments on-site</div>
+                </div>
+                </label>
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="paymentCard" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">💳 Card</div>
+                  <div class="checkbox-description">Credit/debit card payments</div>
+                </div>
+                </label>
+              </div>
+              
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="paymentPaypal" disabled title="PayPal integration coming soon">
+                <div class="checkbox-content">
+                  <div class="checkbox-title">🅿️ PayPal (Coming Soon)</div>
+                  <div class="checkbox-description">PayPal integration is planned for a future update</div>
+              </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">🔔</span>
+              <h3 class="section-title">Notifications</h3>
+            </div>
+            <div class="section-description">
+              Choose how customers receive booking confirmations and reminders.
+            </div>
+            
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="notifEmail" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">📧 Email Notifications</div>
+                  <div class="checkbox-description">Automated email confirmations and reminders (via Gmail SMTP - requires setup)</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="notifSMS" checked>
+                <div class="checkbox-content">
+                  <div class="checkbox-title">📱 SMS Notifications</div>
+                  <div class="checkbox-description">Text message reminders via Twilio (requires Twilio account and API keys)</div>
+                </div>
+              </label>
+            </div>
+
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" class="checkbox-input" id="notifWhatsApp">
+                <div class="checkbox-content">
+                  <div class="checkbox-title">💬 WhatsApp Notifications</div>
+                  <div class="checkbox-description">WhatsApp messages for international customers (requires Twilio WhatsApp Business API)</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Firebase Configuration -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">🔥</span>
+              <h3 class="section-title">Firebase Setup</h3>
+            </div>
+            
+            <div class="info-card" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3);">
+              <div class="info-card-title" style="color: #10b981;">
+                <span>✅</span> 100% FREE - No Credit Card Required
+              </div>
+              <div class="info-card-content" style="color: #94a3b8;">
+                Firebase is completely free for small businesses. You don't need to purchase anything or enter payment info. The free "Spark Plan" includes everything you need.
+              </div>
+            </div>
+
+            <div class="section-description">
+              Firebase powers your booking system (database, hosting, user accounts). Follow these simple steps to get your free Firebase project:
+            </div>
+
+            <!-- Quick Setup Guide -->
+            <div style="background: rgba(102, 126, 234, 0.1); border: 1px solid rgba(102, 126, 234, 0.3); border-radius: 12px; padding: 20px; margin: 20px 0;">
+              <h4 style="color: #667eea; margin-bottom: 15px; font-size: 16px;">📋 Quick Setup (2 minutes):</h4>
+              <ol style="color: #e2e8f0; font-size: 14px; line-height: 2; margin-left: 20px;">
+                <li>Go to <a href="https://console.firebase.google.com/" target="_blank" style="color: #667eea;">console.firebase.google.com</a></li>
+                <li>Click <strong>"Add project"</strong> or <strong>"Create a project"</strong></li>
+                <li>Enter a project name (e.g., "my-booking-site")</li>
+                <li>Click <strong>Continue</strong> → Disable Google Analytics (not needed) → <strong>Create project</strong></li>
+                <li>Wait 10 seconds for it to create</li>
+                <li>Click the <strong>Web icon (&lt;/&gt;)</strong> under "Get started by adding Firebase to your app"</li>
+                <li>Enter an app nickname → Click <strong>Register app</strong></li>
+                <li><strong>Copy the config values</strong> and paste them below! ⬇️</li>
+              </ol>
+            </div>
+
+            <!-- Skip Option -->
+            <div class="checkbox-group" style="margin-bottom: 25px;">
+              <label class="checkbox-label" style="background: rgba(239, 68, 68, 0.05); padding: 15px; border-radius: 8px;">
+                <input type="checkbox" class="checkbox-input" id="skipFirebase">
+                <div class="checkbox-content">
+                  <div class="checkbox-title">🧪 Skip Firebase for now (Test Mode)</div>
+                  <div class="checkbox-description">Generate files without Firebase config. You can add it later. Good for testing the configurator.</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Firebase Config Fields (toggleable) -->
+            <div id="firebaseConfigFields">
+              <div class="warning-card" style="margin-bottom: 20px;">
+                <div class="warning-card-title">
+                  <span>📍</span> Where to find these values
+                </div>
+                <div class="info-card-content" style="color: #fca5a5;">
+                  In Firebase Console: Click the <strong>⚙️ gear icon</strong> (top left) → <strong>Project settings</strong> → Scroll down to <strong>"Your apps"</strong> → Find the <strong>Config</strong> object. Copy each value!
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  API Key <span class="label-required">*</span>
+                </label>
+                <input type="text" class="form-input firebase-input" id="firebaseApiKey" placeholder="AIzaSy...">
+                <span class="form-hint">Look for <code>apiKey:</code> in the config</span>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">
+                  Project ID <span class="label-required">*</span>
+                </label>
+                <input type="text" class="form-input firebase-input" id="firebaseProjectId" placeholder="my-project-123">
+                <span class="form-hint">Look for <code>projectId:</code> (same as project name)</span>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">
+                  App ID <span class="label-required">*</span>
+                </label>
+                <input type="text" class="form-input firebase-input" id="firebaseAppId" placeholder="1:123:web:abc...">
+                <span class="form-hint">Look for <code>appId:</code> in the config</span>
+              </div>
+
+              <!-- Collapsible Advanced Fields -->
+              <details style="margin-top: 20px;">
+                <summary style="color: #94a3b8; cursor: pointer; font-size: 14px; margin-bottom: 15px;">
+                  ▶️ Show optional fields (usually auto-filled)
+                </summary>
+                
+                <div class="form-group">
+                  <label class="form-label">Auth Domain</label>
+                  <input type="text" class="form-input firebase-input" id="firebaseAuthDomain" placeholder="your-project.firebaseapp.com">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Storage Bucket</label>
+                  <input type="text" class="form-input firebase-input" id="firebaseStorageBucket" placeholder="your-project.appspot.com">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Messaging Sender ID</label>
+                  <input type="text" class="form-input firebase-input" id="firebaseMessagingSenderId" placeholder="123456789">
+                </div>
+              </details>
+            </div>
+
+            <div class="info-card" style="margin-top: 20px;">
+              <div class="info-card-title">
+                <span>💡</span> Stuck? Watch a video
+              </div>
+              <div class="info-card-content">
+                Search YouTube for "how to create firebase project" - there are tons of 2-minute tutorials showing exactly where to click!
+              </div>
+            </div>
+          </div>
+
+          <!-- Language -->
+          <div class="section">
+            <div class="section-header">
+              <span class="section-icon">🌍</span>
+              <h3 class="section-title">Language</h3>
+            </div>
+            
+              <div class="form-group">
+              <label class="form-label">Website Language</label>
+              <select class="form-select" id="language">
+                <option value="en">🇺🇸 English</option>
+                <option value="es">🇪🇸 Spanish</option>
+                <option value="fr">🇫🇷 French</option>
+                <option value="de">🇩🇪 German</option>
+                <option value="pt">🇵🇹 Portuguese</option>
+                <option value="it">🇮🇹 Italian</option>
+                <option value="zh">🇨🇳 Chinese</option>
+                <option value="ja">🇯🇵 Japanese</option>
+                </select>
+            </div>
+          </div>
+
+          <!-- Generate Section -->
+          <div class="section" style="border: 2px solid rgba(102, 126, 234, 0.4); background: rgba(102, 126, 234, 0.05);">
+            <div class="section-header">
+              <span class="section-icon">🚀</span>
+              <h3 class="section-title">Ready to Generate Your Website?</h3>
+            </div>
+            
+            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 25px; margin-bottom: 25px;">
+              <h4 style="color: #10b981; margin-bottom: 15px; font-size: 18px;">📋 What Happens Next:</h4>
+              <ol style="color: #e2e8f0; font-size: 15px; line-height: 2.2; margin-left: 20px;">
+                <li><strong>Click "Generate My Website"</strong> below</li>
+                <li>Wait a few seconds while we create your files</li>
+                <li>Files will automatically download to your computer</li>
+                <li>You'll get: HTML, CSS, Firebase config, and deployment guide</li>
+                <li>Follow the included instructions to deploy!</li>
+              </ol>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="generateBtn" style="width: 100%; font-size: 18px; padding: 20px; font-weight: 700;">
+              🚀 Generate My Website
+            </button>
+            
+            <div id="generationStatus" style="display: none; margin-top: 20px; padding: 20px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 8px; text-align: center;">
+              <p style="color: #10b981; font-size: 16px; font-weight: 600; margin-bottom: 10px;">✅ Your website is ready!</p>
+              <p style="color: #94a3b8; font-size: 14px; margin-bottom: 15px;">Files have been downloaded. Check your Downloads folder!</p>
+              <button type="button" class="btn btn-secondary" onclick="downloadConfig()" style="width: 100%;">
+                📥 Download Again (if needed)
+              </button>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px;">
+              <p style="color: #fca5a5; font-size: 14px; margin: 0;">
+                <strong>⚠️ Important:</strong> Make sure you've filled in all required fields above (marked with <span style="color: #ef4444;">*</span>) before generating!
+              </p>
+            </div>
+        </div>
+      </div>
+
+      <!-- Preview Section -->
+      <div class="preview-section">
+          <div class="preview-card">
+            <div class="preview-header">
+              <div class="preview-title">
+                <span>👁️</span>
+                Live Preview
+              </div>
+              <span class="preview-badge">REAL-TIME</span>
+            </div>
+
+          <div class="preview-window">
+              <div class="preview-browser-bar">
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-dot"></div>
+                <div class="browser-url">https://your-business.web.app</div>
+              </div>
+              
+              <div class="preview-content" id="previewContent">
+                <!-- This will show the ACTUAL booking interface -->
+                <div id="realPreview"></div>
+              </div>
+            </div>
+
+            <div class="info-card mt-20">
+              <div class="info-card-title">
+                <span>✨</span> What you're seeing
+              </div>
+              <div class="info-card-content">
+                This is a LIVE PREVIEW of your actual booking website. Changes you make above update instantly. Your final site will look exactly like this, with your colors, fonts, and services.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h3>✅ Success!</h3>
+      <p>Your booking system has been generated!</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Test Mode Confirmation Modal -->
+  <div id="testModeModal" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 500px;">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <div style="width: 80px; height: 80px; background: rgba(239, 68, 68, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 3px solid rgba(239, 68, 68, 0.4);">
+          <span style="font-size: 40px;">🧪</span>
+        </div>
+        <h3 style="color: #ef4444; margin: 0 0 10px 0; font-size: 24px;">Test Mode Active</h3>
+      </div>
+      
+      <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+        <p style="color: #fca5a5; margin: 0 0 15px 0; font-size: 15px; line-height: 1.6;">
+          You skipped Firebase configuration. The generated files will have <strong>placeholder values</strong>.
+        </p>
+        <p style="color: #fca5a5; margin: 0; font-size: 15px; line-height: 1.6;">
+          You'll need to manually add your Firebase config later before deploying.
+        </p>
+      </div>
+
+      <p style="color: #94a3b8; text-align: center; margin-bottom: 25px; font-size: 14px;">
+        Continue with test mode?
+      </p>
+
+      <div class="modal-actions" style="display: flex; gap: 10px;">
+        <button type="button" class="btn btn-secondary" onclick="closeTestModeModal()" style="flex: 1;">
+          ❌ Cancel
+        </button>
+        <button type="button" class="btn btn-primary" onclick="confirmTestMode()" style="flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+          ✅ Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToConfigurator() {
+      document.getElementById('configuratorSection').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+  </script>
+  <script src="../assets/generator.js"></script>
+  <script>
+    // Attach click handler after page loads
+    window.addEventListener('load', () => {
+      console.log('✅ Page fully loaded');
+      console.log('generateConfig exists?', typeof generateConfig);
+      
+      const btn = document.getElementById('generateBtn');
+      console.log('Button exists?', !!btn);
+      
+      if (btn) {
+        // Remove any existing listeners
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        // Add fresh click handler
+        newBtn.addEventListener('click', () => {
+          console.log('🔍 Button clicked!');
+          generateConfig().catch(err => {
+            console.error('Error in generateConfig:', err);
+            alert('Error: ' + err.message);
+          });
+        });
+        console.log('✅ Click handler attached');
+      } else {
+        console.error('❌ Button not found!');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "businessHours": {{BUSINESS_HOURS}},
+  "settings": {
+    "timeFormat": "12hour",
+    "bookingAdvanceDays": 30,
+    "minBookingNotice": 2
+  },
+  "displayText": {
+    "availabilityDescription": "{{BOOKING_DESCRIPTION}}",
+    "scheduleText": {{SCHEDULE_TEXT}}
+  }
+}
+

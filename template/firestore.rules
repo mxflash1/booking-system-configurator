@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Bookings collection
+    match /bookings/{booking} {
+      // Anyone can read bookings (for lookup by phone)
+      allow read: if true;
+      // Anyone can create bookings
+      allow create: if true;
+      // Only authenticated users can update/delete their own bookings
+      allow update, delete: if request.auth != null;
+    }
+    
+    {{#FEATURE_AUTH}}
+    // Users collection (if authentication is enabled)
+    match /users/{userId} {
+      // Users can read/write their own data
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // User bookings (if authentication is enabled)
+    match /userBookings/{userId}/{booking} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    {{/FEATURE_AUTH}}
+    
+    // All other documents are private
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

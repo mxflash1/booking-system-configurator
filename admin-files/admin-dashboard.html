@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Client Orders</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f23;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .dashboard-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 30px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .dashboard-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-subtitle {
+      opacity: 0.9;
+      font-size: 16px;
+    }
+
+    .dashboard-nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .nav-link {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .dashboard-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-label {
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .stat-value {
+      font-size: 48px;
+      font-weight: 800;
+      color: white;
+      line-height: 1;
+    }
+
+    .stat-card.pending {
+      border: 2px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .stat-card.pending .stat-value {
+      color: #fbbf24;
+    }
+
+    .stat-card.in-progress {
+      border: 2px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .stat-card.in-progress .stat-value {
+      color: #3b82f6;
+    }
+
+    .stat-card.completed {
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .stat-card.completed .stat-value {
+      color: #10b981;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter-button {
+      padding: 12px 24px;
+      background: #1a1a2e;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    .filter-button:hover {
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .filter-button.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: transparent;
+    }
+
+    .orders-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .order-card {
+      background: #1a1a2e;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .order-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 20px;
+    }
+
+    .order-business-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .order-client-name {
+      color: #94a3b8;
+      font-size: 16px;
+    }
+
+    .order-status {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .order-status.pending {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+    }
+
+    .order-status.in-progress {
+      background: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+
+    .order-status.completed {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+
+    .order-status.cancelled {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .order-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .order-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .detail-label {
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .detail-value {
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .color-swatch {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      vertical-align: middle;
+      margin-right: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .order-services {
+      background: rgba(102, 126, 234, 0.05);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .services-title {
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .services-list {
+      color: #e2e8f0;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .order-special-requests {
+      background: rgba(251, 191, 36, 0.05);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .special-requests-title {
+      color: #fbbf24;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .special-requests-text {
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    .order-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .action-button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    .action-button.primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .action-button.success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+    }
+
+    .action-button.danger {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: white;
+    }
+
+    .action-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .order-timestamp {
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: #64748b;
+    }
+
+    .empty-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .empty-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #94a3b8;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #667eea;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        padding: 20px;
+      }
+
+      .dashboard-title {
+        font-size: 24px;
+      }
+
+      .order-details {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">📊 Client Orders Dashboard</h1>
+    <p class="dashboard-subtitle">Manage all your client booking website requests</p>
+    <div class="dashboard-nav">
+      <a href="../client-files/index.html" class="nav-link">👀 View Client Page</a>
+    </div>
+  </div>
+
+  <div class="dashboard-container">
+    
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card pending">
+        <div class="stat-label">Pending</div>
+        <div class="stat-value" id="statPending">0</div>
+      </div>
+      <div class="stat-card in-progress">
+        <div class="stat-label">In Progress</div>
+        <div class="stat-value" id="statInProgress">0</div>
+      </div>
+      <div class="stat-card completed">
+        <div class="stat-label">Completed</div>
+        <div class="stat-value" id="statCompleted">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Orders</div>
+        <div class="stat-value" id="statTotal">0</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <button class="filter-button active" data-filter="all">All Orders</button>
+      <button class="filter-button" data-filter="pending">Pending</button>
+      <button class="filter-button" data-filter="in-progress">In Progress</button>
+      <button class="filter-button" data-filter="completed">Completed</button>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading" id="loadingState">
+      ⏳ Loading orders...
+    </div>
+
+    <!-- Orders Grid -->
+    <div class="orders-grid" id="ordersGrid" style="display: none;">
+      <!-- Orders will be dynamically loaded here -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon">📭</div>
+      <div class="empty-title">No orders yet</div>
+      <p>When clients submit requests, they'll appear here</p>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- Firebase Config -->
+  <script src="../client-files/firebase-admin-config.js"></script>
+
+  <!-- Dashboard Logic -->
+  <script>
+    let allOrders = [];
+    let currentFilter = 'all';
+
+    // Load orders on page load
+    window.addEventListener('load', loadOrders);
+
+    async function loadOrders() {
+      try {
+        allOrders = await getAllSubmissions();
+        updateStats();
+        renderOrders();
+        
+        document.getElementById('loadingState').style.display = 'none';
+        
+        if (allOrders.length === 0) {
+          document.getElementById('emptyState').style.display = 'block';
+        } else {
+          document.getElementById('ordersGrid').style.display = 'grid';
+        }
+      } catch (error) {
+        console.error('Error loading orders:', error);
+        document.getElementById('loadingState').innerHTML = '❌ Error loading orders. Check console for details.';
+      }
+    }
+
+    function updateStats() {
+      const pending = allOrders.filter(o => o.status === 'pending').length;
+      const inProgress = allOrders.filter(o => o.status === 'in-progress').length;
+      const completed = allOrders.filter(o => o.status === 'completed').length;
+      
+      document.getElementById('statPending').textContent = pending;
+      document.getElementById('statInProgress').textContent = inProgress;
+      document.getElementById('statCompleted').textContent = completed;
+      document.getElementById('statTotal').textContent = allOrders.length;
+    }
+
+    function renderOrders() {
+      const filteredOrders = currentFilter === 'all' 
+        ? allOrders 
+        : allOrders.filter(o => o.status === currentFilter);
+      
+      const grid = document.getElementById('ordersGrid');
+      
+      if (filteredOrders.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">No orders match this filter</div></div>';
+        return;
+      }
+      
+      grid.innerHTML = filteredOrders.map(order => createOrderCard(order)).join('');
+    }
+
+    function createOrderCard(order) {
+      const submittedDate = order.submittedAt ? new Date(order.submittedAt.toDate()).toLocaleString() : 'N/A';
+      
+      return `
+        <div class="order-card">
+          <div class="order-header">
+            <div>
+              <div class="order-business-name">${escapeHtml(order.businessName)}</div>
+              <div class="order-client-name">${escapeHtml(order.clientName)} • ${escapeHtml(order.clientEmail)}</div>
+            </div>
+            <div class="order-status ${order.status}">${order.status.replace('-', ' ')}</div>
+          </div>
+
+          <div class="order-details">
+            <div class="order-detail">
+              <div class="detail-label">📍 Location</div>
+              <div class="detail-value">${escapeHtml(order.businessLocation)}</div>
+            </div>
+            <div class="order-detail">
+              <div class="detail-label">📞 Client Phone</div>
+              <div class="detail-value">${escapeHtml(order.clientPhone)}</div>
+            </div>
+            <div class="order-detail">
+              <div class="detail-label">☎️ Business Phone</div>
+              <div class="detail-value">${escapeHtml(order.businessPhone || 'Not provided')}</div>
+            </div>
+          </div>
+
+          <div class="order-details">
+            <div class="order-detail">
+              <div class="detail-label">🎨 Primary Color</div>
+              <div class="detail-value">
+                <span class="color-swatch" style="background: ${order.primaryColor}"></span>
+                ${order.primaryColor}
+              </div>
+            </div>
+            <div class="order-detail">
+              <div class="detail-label">🎨 Accent Color</div>
+              <div class="detail-value">
+                <span class="color-swatch" style="background: ${order.secondaryColor}"></span>
+                ${order.secondaryColor}
+              </div>
+            </div>
+            <div class="order-detail">
+              <div class="detail-label">✏️ Font Style</div>
+              <div class="detail-value">${escapeHtml(order.fontStyle)}</div>
+            </div>
+          </div>
+
+          <div class="order-services">
+            <div class="services-title">✂️ Services Offered</div>
+            <div class="services-list">${formatServices(order.services)}</div>
+          </div>
+
+          ${order.specialRequests ? `
+            <div class="order-special-requests">
+              <div class="special-requests-title">💬 Special Requests</div>
+              <div class="special-requests-text">${escapeHtml(order.specialRequests)}</div>
+            </div>
+          ` : ''}
+
+          <div class="order-actions">
+            ${order.status === 'pending' ? `
+              <button class="action-button primary" onclick="updateStatus('${order.id}', 'in-progress')">
+                ▶️ Start Working
+              </button>
+            ` : ''}
+            
+            ${order.status === 'in-progress' ? `
+              <button class="action-button success" onclick="updateStatus('${order.id}', 'completed')">
+                ✅ Mark Complete
+              </button>
+            ` : ''}
+            
+            ${order.status === 'completed' ? `
+              <button class="action-button primary" onclick="updateStatus('${order.id}', 'in-progress')">
+                ↩️ Reopen
+              </button>
+            ` : ''}
+            
+            <button class="action-button primary" onclick="startBuilding('${order.id}', '${escapeHtml(order.businessName)}')">
+              🚀 Start Building
+            </button>
+            
+            <button class="action-button danger" onclick="deleteOrder('${order.id}')">
+              🗑️ Delete
+            </button>
+          </div>
+
+          <div class="order-timestamp">
+            📅 Submitted: ${submittedDate}
+          </div>
+        </div>
+      `;
+    }
+
+    async function updateStatus(orderId, newStatus) {
+      try {
+        await updateSubmissionStatus(orderId, newStatus);
+        await loadOrders();
+        alert(`✅ Order status updated to: ${newStatus}`);
+      } catch (error) {
+        alert('❌ Error updating status: ' + error.message);
+      }
+    }
+
+    async function deleteOrder(orderId) {
+      if (!confirm('Are you sure you want to delete this order? This cannot be undone.')) {
+        return;
+      }
+      
+      try {
+        await deleteSubmission(orderId);
+        await loadOrders();
+        alert('✅ Order deleted successfully');
+      } catch (error) {
+        alert('❌ Error deleting order: ' + error.message);
+      }
+    }
+
+    function startBuilding(orderId, businessName) {
+      const order = allOrders.find(o => o.id === orderId);
+      if (!order) return;
+      
+      // Create a nicely formatted slug for the project name
+      const slug = businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      
+      // Show instructions modal
+      const modal = document.createElement('div');
+      modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;';
+      
+      modal.innerHTML = `
+        <div style="background: #1a1a2e; border-radius: 20px; padding: 40px; max-width: 700px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+          <h2 style="color: #667eea; margin-bottom: 20px; font-size: 28px;">🚀 Start Building: ${businessName}</h2>
+          
+          <div style="background: rgba(102, 126, 234, 0.1); border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+            <h3 style="color: #667eea; margin-bottom: 12px; font-size: 18px;">📋 Quick Steps:</h3>
+            <ol style="color: #e2e8f0; line-height: 2; margin-left: 20px;">
+              <li>Open Terminal</li>
+              <li>Run: <code style="background: #0f0f23; padding: 4px 8px; border-radius: 4px; color: #10b981;">npm run new-client ${slug}</code></li>
+              <li>Open in Cursor: <code style="background: #0f0f23; padding: 4px 8px; border-radius: 4px; color: #10b981;">cd output/${slug} && cursor .</code></li>
+              <li>Update client-config.json with this order's data</li>
+              <li>Tell Cursor: <code style="background: #0f0f23; padding: 4px 8px; border-radius: 4px; color: #10b981;">@workspace Apply client-config.json</code></li>
+            </ol>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 25px;">
+            <h3 style="color: #10b981; margin-bottom: 12px; font-size: 18px;">📝 Client Data to Copy:</h3>
+            <div style="background: #0f0f23; padding: 15px; border-radius: 8px; color: #e2e8f0; font-family: monospace; font-size: 13px; line-height: 1.8; overflow-x: auto;">
+Business Name: ${order.businessName}<br>
+Location: ${order.businessLocation}<br>
+Phone: ${order.businessPhone || 'N/A'}<br>
+Email: ${order.clientEmail}<br>
+Primary Color: ${order.primaryColor}<br>
+Secondary Color: ${order.secondaryColor}<br>
+Font: ${order.fontStyle}<br>
+<br>
+Services:<br>
+${Array.isArray(order.services) ? order.services.map(s => `  ${s.name} - ${s.duration} - ${s.price}`).join('<br>') : order.services}
+${order.specialRequests ? '<br><br>Special Requests:<br>' + order.specialRequests : ''}
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 12px;">
+            <button onclick="copyOrderData('${orderId}')" style="flex: 1; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer;">
+              📋 Copy Order Data
+            </button>
+            <button onclick="this.closest('div').parentElement.parentElement.remove()" style="flex: 1; padding: 14px; background: #444; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer;">
+              Close
+            </button>
+          </div>
+
+          <div style="margin-top: 20px; padding: 15px; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px;">
+            <p style="color: #fbbf24; font-size: 13px; margin: 0;">
+              💡 <strong>Tip:</strong> After running the command, check output/${slug}/BUILD-CHECKLIST.md for a complete step-by-step guide!
+            </p>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+    }
+
+    function copyOrderData(orderId) {
+      const order = allOrders.find(o => o.id === orderId);
+      if (!order) return;
+      
+      const data = `Business Name: ${order.businessName}
+Location: ${order.businessLocation}
+Client Email: ${order.clientEmail}
+Client Phone: ${order.clientPhone}
+Business Phone: ${order.businessPhone || 'N/A'}
+Primary Color: ${order.primaryColor}
+Secondary Color: ${order.secondaryColor}
+Font Style: ${order.fontStyle}
+
+Services:
+${Array.isArray(order.services) ? order.services.map(s => `  ${s.name} - ${s.duration} - ${s.price}`).join('\n') : order.services}
+
+${order.specialRequests ? 'Special Requests:\n' + order.specialRequests : ''}`;
+
+      navigator.clipboard.writeText(data).then(() => {
+        alert('✅ Order data copied to clipboard!');
+      }).catch(() => {
+        alert('❌ Failed to copy. Please copy manually from the modal.');
+      });
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.dataset.filter;
+        renderOrders();
+      });
+    });
+
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Helper function to format services array
+    function formatServices(services) {
+      if (!services) return 'No services provided';
+      
+      // If services is a string, return it as-is
+      if (typeof services === 'string') return escapeHtml(services);
+      
+      // If services is an array of objects, format each one
+      if (Array.isArray(services)) {
+        return services.map(service => {
+          const name = escapeHtml(service.name || 'Unnamed Service');
+          const duration = escapeHtml(service.duration || '');
+          const price = escapeHtml(service.price || '');
+          return `<div style="margin-bottom: 8px;"><strong>${name}</strong> • ${duration} • ${price}</div>`;
+        }).join('');
+      }
+      
+      return 'Invalid service format';
+    }
+
+    // Auto-refresh every 30 seconds
+    setInterval(loadOrders, 30000);
+  </script>
+</body>
+</html>
+

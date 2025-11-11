@@ -1,0 +1,355 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family={{FONT_FAMILY_IMPORT}}&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
+
+body {
+  margin: 0;
+  font-family: {{FONT_FAMILY}};
+  background-color: {{BACKGROUND_COLOR}};
+  color: #fff;
+  line-height: 1.9;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  background-color: #111;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: {{PRIMARY_COLOR}};
+}
+
+.hero {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: blur(4px) brightness(0.4);
+}
+
+.hero-text {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.center-logo {
+  max-width: 300px;
+  width: 90%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: {{SECONDARY_COLOR}};
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+  transition: all 0.2s ease;
+}
+
+.cta:active {
+    transform: scale(0.95);
+  }
+  
+
+.cta:hover {
+  background: {{SECONDARY_COLOR_DARK}};
+}
+
+.time-selected {
+    background-color: {{PRIMARY_COLOR}} !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+    transform: scale(0.90);
+    
+    transition: all 0.2s ease-in-out;
+  }
+  
+
+section {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  color: {{PRIMARY_COLOR}};
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+  
+input, select, textarea, button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  background-color: {{PRIMARY_COLOR}};
+  color: white;
+  cursor: pointer;
+  font-family: {{FONT_FAMILY}};
+}
+
+button:hover {
+  background-color: {{PRIMARY_COLOR_DARK}};
+}
+
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Time slot panel */
+#timeSlots {
+  display: none;
+  margin-top: 10px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#timeSlots.active {
+  display: flex;
+}
+
+#timeSlots button {
+  background-color: {{SECONDARY_COLOR}};
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#timeSlots button:hover {
+  background-color: {{SECONDARY_COLOR_DARK}};
+}
+
+#bookingDate {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+#popupMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: {{SECONDARY_COLOR}};
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  
+  #popupMessage.show {
+    opacity: 1;
+  }
+
+  ::placeholder {
+    font-family: {{FONT_FAMILY}};
+  }
+  
+  form > * {
+    margin-bottom: 10px;
+  }
+  
+  .flatpickr-calendar {
+    font-family: Arial, sans-serif !important;
+  }
+
+  a {
+    color: {{SECONDARY_COLOR}};
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-logo {
+    height: 100px;
+    margin-right: auto;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-logo {
+      display: none;
+    }
+  }
+  
+  #calendar {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #111;
+    padding: 20px;
+    border-radius: 8px;
+  }
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    font-family: {{FONT_FAMILY}};
+  }
+  
+  .modal-content {
+    background-color: #111;
+    color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border: 2px solid {{PRIMARY_COLOR}};
+    width: 80%;
+    max-width: 500px;
+    border-radius: 6px;
+    text-align: left;
+  }
+  
+  .modal-text {
+    white-space: pre-wrap;
+    font-size: 18px;
+    color: #00ffcc;
+  }
+  
+  .close-button {
+    color: #fff;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+
+
+  /* Mobile booking form styling */
+  #booking {
+    padding: 20px 15px !important;
+  }
+
+  #bookingForm {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  #bookingForm input,
+  #bookingForm textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 15px !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 15px !important;
+    border-radius: 8px !important;
+  }
+
+  #bookingDate {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #ddd !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  #bookingDate:focus {
+    border-color: {{SECONDARY_COLOR}} !important;
+    outline: none !important;
+  }
+
+  /* Time slots mobile styling */
+  #timeSlots {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin: 15px 0 !important;
+  }
+
+  #timeSlots button {
+    padding: 12px 8px !important;
+    font-size: 14px !important;
+    border-radius: 6px !important;
+  }
+
+  /* Flatpickr mobile adjustments */
+  .flatpickr-calendar {
+    font-size: 16px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+
+  .flatpickr-day {
+    height: 40px !important;
+    line-height: 40px !important;
+    max-width: 40px !important;
+  }
+}
+

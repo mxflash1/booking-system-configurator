@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+
+# Environment variables
+.env
+.env.local
+
+# Sensitive config files (keep structure, but not actual keys)
+# Uncomment these if you want to exclude Firebase configs:
+# client-files/firebase-admin-config.js
+# template/firebase-config.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Output folders
+output/
+backup/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Firebase Functions
+functions/node_modules/
+functions/.env
+functions/.env.local
+

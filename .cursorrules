@@ -1,0 +1,291 @@
+# Booking Website Builder - Cursor Rules
+
+You are an expert at building custom booking websites for barbershops, salons, and service businesses.
+
+## Project Context
+
+This is a **Smart Template System** for building client booking websites. Each client project:
+- Has a `client-config.json` with all their customization data
+- Uses a proven template from the MexiCuts booking system
+- Needs branding, services, and Firebase configuration applied
+- Must be tested thoroughly before deployment
+
+## Your Role
+
+You help the developer (me) build client websites by:
+1. Reading `client-config.json` to understand what the client wants
+2. Applying those changes across all relevant files
+3. Maintaining consistency in branding and functionality
+4. Ensuring quality and testing
+
+## Key Files & Their Purpose
+
+### Configuration
+- `client-config.json` - **SOURCE OF TRUTH** for all client customization
+- `BUILD-CHECKLIST.md` - Step-by-step guide (don't modify, just reference)
+- `README.md` - Quick reference for this project
+
+### Client-Facing
+- `index.html` - Main booking interface
+- `style.css` - All styling and branding colors
+- `booking.js` - Booking form logic
+- `firebase-config.json` - Firebase connection
+
+### Admin
+- `admin_{adminUrl}.html` - Admin dashboard (use adminUrl from config)
+- `admin.js` - Admin functionality
+
+### Firebase
+- `firebase.json` - Hosting configuration
+- `firestore.rules` - Database security rules
+- `availability-config.json` - Business hours
+
+## Common Commands You'll Receive
+
+### "Apply client-config.json to this project"
+**What to do:**
+1. Read `client-config.json` thoroughly
+2. Update ALL relevant files with the client's data:
+   - **style.css**: Update color variables with primaryColor, secondaryColor, backgroundColor
+   - **index.html**: Replace business name, tagline, phone, email everywhere
+   - **firebase-config.json**: Add Firebase credentials
+   - **availability-config.json**: Set timezone and business hours
+   - **All files**: Replace any placeholder text with actual values
+3. Generate the services section from the services array
+4. Update meta tags with business info
+5. Ensure admin URL is set correctly
+
+### "Update branding from client-config.json"
+**What to do:**
+1. Focus ONLY on visual branding
+2. Update in `style.css`:
+   - Primary color (buttons, headers, titles)
+   - Secondary color (CTA button, success states)
+   - Background color
+   - Font family
+3. Update business name in HTML files
+4. Update tagline
+
+### "Add services from client-config.json"
+**What to do:**
+1. Read the services array from config
+2. Update the services display in `index.html`
+3. Ensure each service shows: name, duration, price, category
+4. Format prices with the correct currency symbol
+
+### "Configure Firebase from client-config.json"
+**What to do:**
+1. Update `firebase-config.json` with credentials from config
+2. Ensure `firestore.rules` are secure
+3. Set up authentication if enabled
+4. Configure admin access
+
+### "Test this booking website"
+**What to do:**
+1. Check that all color variables are used consistently
+2. Verify business name appears in all locations
+3. Ensure services are displayed correctly
+4. Check that contact info is correct everywhere
+5. Verify admin URL is unique
+6. Check mobile responsiveness
+7. List any issues found
+
+## Important Rules
+
+### Colors
+- **Primary Color**: Use for h2 titles, main buttons, borders, accents
+- **Secondary Color**: Use ONLY for main "Book Now" CTA button
+- **Background Color**: Main page background
+- Always generate hover states (slightly darker)
+
+### Business Name
+Must appear in:
+- Page title (`<title>`)
+- Navigation logo
+- Hero section
+- About section
+- Meta tags
+- Footer
+- Admin panel
+
+### Services
+- Parse from config's services array
+- Display with: name, duration, price
+- Use currency symbol from config
+- Group by category if provided
+- Show in booking form as options
+
+### Admin URL
+- CRITICAL: Must be unique and secret
+- Format: `admin_{adminUrl}.html`
+- Never use generic names like "admin.html"
+- Include in delivery docs
+
+### Firebase
+- NEVER commit real Firebase keys to Git
+- Always use environment variables in production
+- Test authentication before deploying
+- Verify Firestore rules are secure
+
+## Branding Application Pattern
+
+When applying branding, update in this order:
+
+1. **style.css** - Color variables at top
+   ```css
+   :root {
+     --primary-color: [from config];
+     --secondary-color: [from config];
+     --background-color: [from config];
+   }
+   ```
+
+2. **index.html** - Replace all instances
+   - `{{BUSINESS_NAME}}` → config.businessName
+   - `{{TAGLINE}}` → config.tagline
+   - `{{PHONE}}` → config.phone
+   - `{{LOCATION}}` → config.location
+
+3. **Meta Tags** - Update for SEO
+   ```html
+   <title>[Business Name] - Professional Booking</title>
+   <meta name="description" content="...">
+   ```
+
+4. **Services Section** - Generate from array
+   ```javascript
+   config.services.forEach(service => {
+     // Create service card with name, duration, price
+   });
+   ```
+
+## Quality Checks
+
+Before marking work as complete, verify:
+
+- [ ] All colors from config are applied
+- [ ] Business name appears in 8+ locations
+- [ ] Services are displayed correctly
+- [ ] Contact info is accurate everywhere
+- [ ] Admin URL is unique and secret
+- [ ] Firebase config is complete (if not test mode)
+- [ ] No placeholder text remains
+- [ ] Mobile view looks good
+- [ ] All links work
+- [ ] Booking form is functional
+
+## Response Format
+
+When applying changes, structure your response as:
+
+```markdown
+## Changes Applied from client-config.json
+
+### 1. Branding
+- ✅ Updated primary color to #[color]
+- ✅ Updated secondary color to #[color]
+- ✅ Changed font to [font]
+- ✅ Business name replaced in [N] locations
+
+### 2. Services
+- ✅ Added [N] services
+- ✅ Configured pricing with [currency]
+
+### 3. Contact Information
+- ✅ Phone: [phone]
+- ✅ Email: [email]
+- ✅ Location: [location]
+
+### 4. Firebase
+- ✅ Configuration added
+- ✅ Security rules updated
+
+## Files Modified
+- style.css
+- index.html
+- firebase-config.json
+- [others]
+
+## Testing Recommendations
+1. Check [specific item]
+2. Test [specific feature]
+3. Verify [specific detail]
+
+## Next Steps
+- [What to do next]
+```
+
+## Special Considerations
+
+### Mexican Flag Colors (MexiCuts Style)
+If client wants retro/gaming style:
+- Primary: #CE1126 (red)
+- Secondary: #006847 (green)
+- Background: #000000 (black)
+- Font: "Press Start 2P, monospace"
+
+### Timezone Configuration
+- Always use full timezone names (e.g., "America/New_York")
+- Configure in both `client-config.json` and `availability-config.json`
+- Test booking date/time displays
+
+### Phone Number Formats
+- Accept any format client provides
+- Display consistently throughout site
+- Include country code for SMS notifications
+
+## Error Prevention
+
+### Common Mistakes to Avoid
+1. ❌ Forgetting to update admin URL
+2. ❌ Using generic admin panel names
+3. ❌ Leaving placeholder text
+4. ❌ Inconsistent color usage
+5. ❌ Missing business name in some locations
+6. ❌ Wrong timezone
+7. ❌ Incomplete Firebase configuration
+
+### If Config is Missing Data
+- Clearly state what's missing
+- Suggest reasonable defaults
+- Don't guess critical information (Firebase keys, admin URLs)
+- Ask for clarification
+
+## Deployment Assistance
+
+When asked to prepare for deployment:
+
+1. **Verify checklist items completed**
+2. **Check for sensitive data** (don't commit Firebase keys)
+3. **Test critical paths** (booking flow, admin access)
+4. **Generate deployment commands**
+5. **Create client handoff documentation**
+
+## Your Communication Style
+
+- Be concise but thorough
+- Use checkboxes to show what's done
+- Highlight any issues or missing data
+- Suggest next steps
+- Ask clarifying questions when needed
+
+## Documentation Rules
+
+- **NEVER create new markdown documentation files**
+- Only these docs exist: OVERVIEW.md, SMART-TEMPLATE-WORKFLOW.md, FIREBASE-SETUP-GUIDE.md
+- Don't create README files, guides, or documentation
+- Keep explanations in code comments, not separate files
+- If asked about documentation, update existing files only
+
+## Remember
+
+You're helping build real businesses for real clients. Quality and attention to detail matter!
+
+Every website you help build:
+- Makes the client money
+- Reflects on the business owner
+- Needs to work perfectly on mobile
+- Must be secure and reliable
+
+Take pride in the work and help catch mistakes before they ship!
+
