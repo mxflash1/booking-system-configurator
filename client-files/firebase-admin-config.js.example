@@ -1,15 +1,21 @@
 // Firebase Admin Configuration for Client Submissions
 // This is YOUR Firebase project that stores client orders
+// 
+// INSTRUCTIONS:
+// 1. Copy this file to firebase-admin-config.js
+// 2. Replace the placeholder values with your actual Firebase config
+// 3. Get your config from: https://console.firebase.google.com/project/YOUR_PROJECT/settings/general
+// 4. NEVER commit firebase-admin-config.js to Git!
 
 // Firebase config for Booking Builder Service
 const firebaseConfig = {
-  apiKey: "AIzaSyA68uFSW06Bt0a60x4CgCEwwukzHgiQo9s",
-  authDomain: "booking-website-builder.firebaseapp.com",
-  projectId: "booking-website-builder",
-  storageBucket: "booking-website-builder.firebasestorage.app",
-  messagingSenderId: "1030221122115",
-  appId: "1:1030221122115:web:e8afad42d58179463062f6",
-  measurementId: "G-8PW7EN6165"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.firebasestorage.app",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID"
 };
 
 // Initialize Firebase

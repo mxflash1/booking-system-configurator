@@ -127,6 +127,19 @@ Must appear in:
 - Test authentication before deploying
 - Verify Firestore rules are secure
 
+### Security - CRITICAL BEFORE COMMITS
+**ALWAYS check for sensitive information before committing to GitHub:**
+1. ✅ Check for API keys, secrets, passwords in files
+2. ✅ Verify `.gitignore` excludes sensitive files:
+   - `client-files/firebase-admin-config.js` (use `.example` version instead)
+   - `template/firebase-config.json` (use placeholder values)
+   - Any `.env` files
+   - Firebase service account keys
+3. ✅ Search for patterns like: `apiKey`, `API_KEY`, `password`, `secret`, `token`
+4. ✅ If sensitive data is found, remove it from git history or use `git rm --cached`
+5. ✅ Use `.example` files as templates (e.g., `firebase-admin-config.js.example`)
+6. ✅ Warn user if you detect sensitive data in files about to be committed
+
 ## Branding Application Pattern
 
 When applying branding, update in this order:

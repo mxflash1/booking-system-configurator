@@ -12,10 +12,15 @@ firebase-debug.*.log
 .env
 .env.local
 
-# Sensitive config files (keep structure, but not actual keys)
-# Uncomment these if you want to exclude Firebase configs:
-# client-files/firebase-admin-config.js
-# template/firebase-config.json
+# Sensitive config files - NEVER commit these with real keys!
+client-files/firebase-admin-config.js
+template/firebase-config.json
+functions/.env
+functions/.env.local
+*.env
+*.env.local
+.env
+.env.local
 
 # OS files
 .DS_Store
