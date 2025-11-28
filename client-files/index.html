@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MexiSites - Custom Booking Websites Built in 1 Week</title>
-  <meta name="description" content="MexiSites builds custom booking websites for barbershops, salons, and service businesses. Professional websites delivered in 1 week with 1 month free trial.">
+  <title>MEXI.SITES</title>
+  <meta name="description" content="MexiSites builds custom booking websites for barbershops, salons, and service businesses.">
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  <link rel="icon" type="image/png" sizes="32x32" href="mexisiteslogo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="mexisiteslogo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="mexisiteslogo.png">
+  <link rel="shortcut icon" href="mexisiteslogo.png">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=Nunito:wght@400;600;700&family=Montserrat:wght@400;600;700;800&family=Oswald:wght@400;600;700&family=Raleway:wght@400;600;700&family=Bebas+Neue&family=Anton&family=Lato:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Crimson+Text:wght@400;600;700&family=Libre+Baskerville:wght@400;700&family=Righteous&family=Pacifico&family=Caveat:wght@400;600&family=Dancing+Script:wght@400;600;700&family=Permanent+Marker&family=Press+Start+2P&family=Orbitron:wght@400;600;700&family=Exo+2:wght@400;600;700&family=Audiowide&family=Chakra+Petch:wght@400;600;700&family=Quicksand:wght@400;600;700&family=Karla:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <style>
     /* Client-Facing Landing Page Styles */
     * {
@@ -22,24 +24,101 @@
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #0f0f23;
       min-height: 100vh;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    * {
+      max-width: 100%;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Header Bar */
+    .top-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      padding: 20px 40px;
+      background: #000000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-logo {
+      height: 80px;
+      width: auto;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .header-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    .header-nav a:hover {
+      color: #006847;
     }
 
     .hero-section {
       min-height: 100vh;
+      min-height: 100dvh; /* Dynamic viewport height for mobile */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 100px 40px 20px;
       color: white;
+      background: #000000;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    /* Gradient divider between hero and form - more stretched */
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.2) 20%,
+        rgba(15, 15, 35, 0.4) 40%,
+        rgba(15, 15, 35, 0.7) 70%,
+        #0f0f23 100%);
+      pointer-events: none;
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 700px;
       animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes fadeInUp {
@@ -54,81 +133,354 @@
     }
 
     .hero-title {
-      font-size: 64px;
-      font-weight: 900;
-      margin-bottom: 24px;
-      letter-spacing: -2px;
-      line-height: 1.1;
+      margin-bottom: 40px;
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 320px;
+      height: auto;
+      max-width: 90%;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
     }
 
     .hero-subtitle {
-      font-size: 24px;
-      opacity: 0.95;
+      font-size: 14px;
       margin-bottom: 40px;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 2.8;
+      font-family: 'Press Start 2P', monospace;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #ffffff;
     }
 
-    .hero-features {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin: 60px 0;
-      flex-wrap: wrap;
-    }
-
-    .hero-feature {
-      text-align: center;
-    }
-
-    .hero-feature-number {
-      font-size: 48px;
-      font-weight: 700;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .hero-feature-label {
-      font-size: 14px;
-      opacity: 0.9;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
 
     .cta-button {
       display: inline-block;
-      padding: 22px 60px;
-      background: white;
-      color: #667eea;
-      font-size: 22px;
-      font-weight: 700;
-      border-radius: 12px;
+      padding: 20px 50px;
+      background: #006847;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 400;
+      border-radius: 4px;
       text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s;
+      box-shadow: 0 0 0 3px #006847;
       cursor: pointer;
       border: none;
-      font-family: inherit;
+      font-family: 'Press Start 2P', monospace;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
     }
 
     .cta-button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+      background: #008050;
+      box-shadow: 0 0 0 3px #008050;
+      transform: translateY(-2px);
+    }
+
+    .cta-button:active {
+      transform: translateY(0);
+      box-shadow: 0 0 0 3px #005a3a;
     }
 
     .trust-badge {
-      margin-top: 40px;
-      padding: 20px 30px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: transparent;
+      border-radius: 0;
       display: inline-block;
-      backdrop-filter: blur(10px);
+      border: none;
     }
 
     .trust-badge-text {
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffd700;
+      font-size: 10px;
+      font-weight: 400;
+      color: #666666;
+      font-family: 'Press Start 2P', monospace;
+      line-height: 1.8;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+
+    /* Footer with contact info */
+    .footer {
+      background: #0f0f23;
+      padding: 60px 40px 40px;
+      text-align: center;
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 14px;
+      color: #4F5D4F;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .footer-info {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: #cccccc;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .footer-info a {
+      color: #006847;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-info a:hover {
+      color: #008050;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(102, 126, 234, 0.05);
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+    }
+
+    .contact-form-group {
+      margin-bottom: 20px;
+    }
+
+    .contact-form-label {
+      display: block;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-input,
+    .contact-form-textarea {
+      width: 100%;
+      padding: 12px;
+      background: #0f0f23;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .contact-form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form-input:focus,
+    .contact-form-textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .contact-form-submit {
+      padding: 14px 30px;
+      background: #006847;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+
+    .contact-form-submit:hover {
+      background: #008050;
+      transform: translateY(-2px);
+    }
+
+    .contact-form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .contact-form-success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: #10b981;
+      display: none;
+    }
+
+    .contact-form-success.show {
+      display: block;
+    }
+
+    /* Popup Notifications */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-content {
+      background: #0f0f23;
+      border: 3px solid;
+      padding: 30px 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-width: 350px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+      font-family: 'Press Start 2P', monospace;
+      font-size: 12px;
+      line-height: 1.8;
+      position: relative;
+      animation: popupSlideIn 0.3s ease;
+      pointer-events: auto;
+      box-sizing: border-box;
+    }
+
+    @keyframes popupSlideIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 5px 10px;
+      transition: color 0.2s ease, transform 0.2s ease;
+      font-family: Arial, sans-serif;
+      z-index: 10;
+    }
+
+    .popup-close:hover {
+      color: #ef4444;
+      transform: scale(1.2);
+    }
+
+    .popup-success .popup-close {
+      color: #10b981;
+    }
+
+    .popup-success .popup-close:hover {
+      color: #ef4444;
+    }
+
+    .popup-error .popup-close {
+      color: #ef4444;
+    }
+
+    .popup-success {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .popup-error {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .popup-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .popup-success .popup-icon {
+      color: #10b981;
+    }
+
+    .popup-error .popup-icon {
+      color: #ef4444;
+    }
+
+    .popup-message {
+      color: #ffffff;
+      flex: 1;
+      white-space: pre-line;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .popup-success .popup-message {
+      color: #10b981;
+    }
+
+    .popup-error .popup-message {
+      color: #ef4444;
+    }
+
+    @media (max-width: 768px) {
+      .popup-content {
+        min-width: auto;
+        max-width: 90%;
+        padding: 20px 25px;
+        font-size: 10px;
+        gap: 15px;
+      }
+
+      .popup-icon {
+        font-size: 20px;
+      }
+
+      .popup-close {
+        font-size: 28px;
+        top: 8px;
+        right: 8px;
+      }
     }
 
     /* Form Section */
@@ -142,6 +494,9 @@
       max-width: 1600px;
       margin: 0 auto;
       display: grid;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 20px;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: start;
@@ -167,14 +522,20 @@
     }
 
     .form-header h2 {
-      font-size: 48px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 400;
       margin-bottom: 16px;
+      font-family: 'Press Start 2P', monospace;
+      color: #4F5D4F;
+      letter-spacing: 2px;
     }
 
     .form-header p {
-      font-size: 20px;
-      opacity: 0.8;
+      font-size: 14px;
+      opacity: 0.7;
+      font-family: 'Press Start 2P', monospace;
+      color: #cccccc;
+      line-height: 1.8;
     }
 
     .form-card {
@@ -185,12 +546,14 @@
     }
 
     .form-section-title {
-      color: #667eea;
-      font-size: 24px;
-      font-weight: 700;
+      color: #4F5D4F;
+      font-size: 16px;
+      font-weight: 400;
       margin-bottom: 30px;
       padding-bottom: 15px;
-      border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+      border-bottom: 2px solid rgba(79, 93, 79, 0.3);
+      font-family: 'Press Start 2P', monospace;
+      letter-spacing: 1px;
     }
 
     .form-group {
@@ -229,6 +592,74 @@
       outline: none;
       border-color: #667eea;
       box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .country-code-display {
+      flex-shrink: 0;
+      padding: 16px 20px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 12px;
+      color: #667eea;
+      font-size: 16px;
+      font-family: 'Press Start 2P', monospace;
+      font-weight: 600;
+      min-width: 100px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+
+    .phone-number-input {
+      flex: 1;
+      padding: 16px;
+      background: #0f0f23;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .phone-number-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .copy-phone-btn {
+      padding: 12px 16px;
+      background: rgba(102, 126, 234, 0.2);
+      border: 2px solid rgba(102, 126, 234, 0.4);
+      border-radius: 12px;
+      color: #667eea;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .copy-phone-btn:hover {
+      background: rgba(102, 126, 234, 0.3);
+      border-color: #667eea;
+      transform: translateY(-1px);
+    }
+
+    .copy-phone-btn:active {
+      transform: translateY(0);
     }
 
     .form-textarea {
@@ -354,9 +785,12 @@
       border-radius: 12px;
       padding: 20px;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr auto;
+      grid-template-columns: 2fr 1.2fr 1.2fr auto;
       gap: 12px;
       align-items: start;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
     .service-item:last-child {
@@ -388,6 +822,87 @@
     }
 
     .service-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .price-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .currency-prefix {
+      position: absolute;
+      left: 12px;
+      color: #94a3b8;
+      font-size: 15px;
+      font-weight: 600;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .price-input {
+      width: 100%;
+      padding: 12px 12px 12px 28px;
+      background: #0f0f23;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .price-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .duration-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .duration-input {
+      flex: 0 0 60px;
+      padding: 12px;
+      background: #0f0f23;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.3s;
+      width: 60px;
+      max-width: 60px;
+    }
+
+    .duration-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .duration-unit-select {
+      padding: 12px;
+      background: #0f0f23;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+
+    .duration-unit-select:focus {
       outline: none;
       border-color: #667eea;
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -447,7 +962,7 @@
       }
     }
 
-    .submit-button {
+      .submit-button {
       width: 100%;
       padding: 22px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -482,10 +997,12 @@
     }
 
     .pricing-title {
-      color: #10b981;
-      font-size: 28px;
-      font-weight: 700;
+      color: #4F5D4F;
+      font-size: 14px;
+      font-weight: 400;
       margin-bottom: 16px;
+      font-family: 'Press Start 2P', monospace;
+      letter-spacing: 1px;
     }
 
     .pricing-amount {
@@ -493,6 +1010,7 @@
       font-weight: 900;
       color: white;
       margin-bottom: 8px;
+      font-family: 'Press Start 2P', monospace;
     }
 
     .pricing-period {
@@ -523,15 +1041,60 @@
       font-size: 20px;
     }
 
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 60px;
-      color: white;
+    .success-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      backdrop-filter: blur(4px);
     }
 
-    .success-message.show {
-      display: block;
+    .success-popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .success-message {
+      background: #1a1a2e;
+      border: 3px solid #10b981;
+      border-radius: 16px;
+      padding: 50px 60px;
+      text-align: center;
+      color: white;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+      animation: popupSlideIn 0.3s ease;
+      position: relative;
+    }
+
+    .success-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 5px 10px;
+      transition: color 0.2s ease, transform 0.2s ease;
+      font-family: Arial, sans-serif;
+    }
+
+    .success-close:hover {
+      color: #10b981;
+      transform: scale(1.2);
     }
 
     .success-icon {
@@ -540,16 +1103,35 @@
     }
 
     .success-title {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       margin-bottom: 16px;
       color: #10b981;
     }
 
     .success-text {
-      font-size: 20px;
+      font-size: 16px;
       opacity: 0.9;
-      line-height: 1.6;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .success-message {
+        padding: 40px 30px;
+        max-width: 95%;
+      }
+
+      .success-title {
+        font-size: 24px;
+      }
+
+      .success-text {
+        font-size: 14px;
+      }
+
+      .success-icon {
+        font-size: 60px;
+      }
     }
 
     /* Preview Panel */
@@ -620,60 +1202,321 @@
     }
 
     @media (max-width: 768px) {
+      .top-header {
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .header-logo {
+        height: 50px;
+        max-width: 40%;
+      }
+
+      .header-nav {
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      .header-nav a {
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 120px 30px 40px;
+        justify-content: center;
+      }
+
+      .hero-logo {
+        width: 320px;
+        max-width: 85%;
+      }
+
       .hero-title {
-        font-size: 40px;
+        margin-bottom: 50px;
+        margin-top: 30px;
       }
 
       .hero-subtitle {
-        font-size: 18px;
+        font-size: 11px;
+        margin-bottom: 50px;
+        padding: 0 20px;
+        line-height: 2.5;
       }
 
-      .hero-features {
-        gap: 40px;
+      .cta-button {
+        padding: 20px 50px;
+        font-size: 12px;
+        width: auto;
+        max-width: 100%;
+      }
+
+      .trust-badge {
+        margin-top: 30px;
+        padding: 12px 20px;
+      }
+
+      .trust-badge-text {
+        font-size: 8px;
+      }
+
+      .footer {
+        padding: 40px 20px 30px;
+      }
+
+      .footer-title {
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+
+      .footer-info {
+        font-size: 9px;
+      }
+
+      .form-section {
+        padding: 40px 15px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      .form-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
       }
 
       .form-card {
-        padding: 30px 20px;
+        padding: 25px 15px;
+        border-radius: 16px;
+      }
+
+      .form-header {
+        margin-bottom: 30px;
       }
 
       .form-header h2 {
-        font-size: 32px;
+        font-size: 28px;
+      }
+
+      .form-header p {
+        font-size: 16px;
+      }
+
+      .form-section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 14px;
+        font-size: 16px; /* Prevents zoom on iOS */
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+
+      .phone-input-wrapper {
+        flex-wrap: wrap;
+      }
+
+      .country-code-display {
+        min-width: 80px;
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+
+      .phone-number-input {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Move "Use Same as Above" button below the input on mobile */
+      .copy-phone-btn {
+        width: 100%;
+        order: 3;
+        margin-top: 8px;
+      }
+
+      .color-input-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .color-preview {
+        width: 80px;
+        height: 80px;
+        align-self: center;
+      }
+
+      .service-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      .service-item > * {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+
+      .remove-service-btn {
+        width: 100%;
+        height: 44px;
+      }
+
+      .submit-button {
+        padding: 18px;
+        font-size: 18px;
+      }
+
+      .pricing-card {
+        padding: 25px 20px;
+        margin: 30px 0;
+      }
+
+      .pricing-title {
+        font-size: 12px;
+      }
+
+      .pricing-amount {
+        font-size: 48px;
+      }
+
+      .preview-panel {
+        position: relative;
+        top: 0;
+        margin-top: 30px;
+      }
+
+      .preview-content {
+        max-height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-header {
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .header-logo {
+        height: 45px;
+        max-width: 35%;
+      }
+
+      .header-nav {
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      .header-nav a {
+        font-size: 8px;
+        white-space: nowrap;
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 110px 20px 30px;
+        justify-content: center;
+      }
+
+      .hero-logo {
+        width: 280px;
+        max-width: 80%;
+      }
+
+      .hero-title {
+        margin-bottom: 40px;
+        margin-top: 20px;
+      }
+
+      .hero-subtitle {
+        font-size: 10px;
+        margin-bottom: 40px;
+        padding: 0 15px;
+        line-height: 2.2;
+      }
+
+      .cta-button {
+        padding: 18px 40px;
+        font-size: 11px;
+        width: auto;
+      }
+
+      .trust-badge {
+        margin-top: 25px;
+        padding: 10px 15px;
+      }
+
+      .trust-badge-text {
+        font-size: 7px;
+      }
+
+      .footer {
+        padding: 30px 15px 20px;
+      }
+
+      .footer-title {
+        font-size: 10px;
+        margin-bottom: 15px;
+      }
+
+      .footer-info {
+        font-size: 8px;
+      }
+
+      .form-card {
+        padding: 20px 12px;
+      }
+
+      .form-header h2 {
+        font-size: 24px;
       }
     }
   </style>
 </head>
 <body>
   
+  <!-- Top Header -->
+  <header class="top-header">
+    <img src="headerlogo.png" alt="MexiSites" class="header-logo">
+    <nav class="header-nav">
+      <a href="#formSection">Get Started</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
   <!-- Hero Section -->
   <div class="hero-section" id="heroSection">
     <div class="hero-content">
-      <h1 class="hero-title">🚀 MexiSites</h1>
+      <h1 class="hero-title">
+        <img src="mexisiteslogo.png" alt="MexiSites Logo" class="hero-logo">
+      </h1>
       <p class="hero-subtitle">
-        Custom booking websites for barbershops, salons & service businesses.<br>
-        Built on a proven system. Delivered in 1 week. Try it free for 1 month.
+        Custom booking websites built in 1 week.<br>
+        Built on a proven system. Try free for 1 month.
       </p>
-      
-      <div class="hero-features">
-        <div class="hero-feature">
-          <span class="hero-feature-number">1 Week</span>
-          <span class="hero-feature-label">Delivery Time</span>
-        </div>
-        <div class="hero-feature">
-          <span class="hero-feature-number">1 Month</span>
-          <span class="hero-feature-label">FREE Trial</span>
-        </div>
-        <div class="hero-feature">
-          <span class="hero-feature-number">100%</span>
-          <span class="hero-feature-label">Custom Built</span>
-        </div>
-      </div>
 
       <button type="button" class="cta-button" onclick="scrollToForm()">
-        🎨 Get Your Website Built
+        Start Free Trial
       </button>
 
       <div class="trust-badge">
-        <p class="trust-badge-text">✨ Built on a tested system • No setup hassles • Cancel anytime</p>
+        <p class="trust-badge-text">Built on a tested system • No setup hassles • Cancel anytime</p>
       </div>
     </div>
   </div>
@@ -682,7 +1525,7 @@
   <div class="form-section" id="formSection">
       <div class="form-header">
         <h2>Tell Us What You Need</h2>
-      <p>Fill out this form and see your website come to life! ✨</p>
+      <p>Fill out this form and see your website come to life!</p>
       </div>
 
     <div class="form-container">
@@ -706,8 +1549,63 @@
             </div>
           </div>
 
+          <!-- Country & Language Selection -->
+          <h3 class="form-section-title">🌍 Start Here</h3>
+          
+          <div class="form-group">
+            <label class="form-label">
+              Your Country <span class="form-required">*</span>
+            </label>
+            <select class="form-select" id="businessCountry" required>
+              <option value="">Select your country...</option>
+              <option value="US" data-code="+1" data-lang="en" data-currency="$">🇺🇸 United States</option>
+              <option value="CA" data-code="+1" data-lang="en" data-currency="$">🇨🇦 Canada</option>
+              <option value="MX" data-code="+52" data-lang="es" data-currency="$">🇲🇽 Mexico</option>
+              <option value="GB" data-code="+44" data-lang="en" data-currency="£">🇬🇧 United Kingdom</option>
+              <option value="AU" data-code="+61" data-lang="en" data-currency="$">🇦🇺 Australia</option>
+              <option value="NZ" data-code="+64" data-lang="en" data-currency="$">🇳🇿 New Zealand</option>
+              <option value="FR" data-code="+33" data-lang="fr" data-currency="€">🇫🇷 France</option>
+              <option value="DE" data-code="+49" data-lang="de" data-currency="€">🇩🇪 Germany</option>
+              <option value="ES" data-code="+34" data-lang="es" data-currency="€">🇪🇸 Spain</option>
+              <option value="IT" data-code="+39" data-lang="it" data-currency="€">🇮🇹 Italy</option>
+              <option value="BR" data-code="+55" data-lang="pt" data-currency="R$">🇧🇷 Brazil</option>
+              <option value="AR" data-code="+54" data-lang="es" data-currency="$">🇦🇷 Argentina</option>
+              <option value="CL" data-code="+56" data-lang="es" data-currency="$">🇨🇱 Chile</option>
+              <option value="CO" data-code="+57" data-lang="es" data-currency="$">🇨🇴 Colombia</option>
+              <option value="JP" data-code="+81" data-lang="ja" data-currency="¥">🇯🇵 Japan</option>
+              <option value="CN" data-code="+86" data-lang="zh" data-currency="¥">🇨🇳 China</option>
+              <option value="IN" data-code="+91" data-lang="en" data-currency="₹">🇮🇳 India</option>
+              <option value="SG" data-code="+65" data-lang="en" data-currency="$">🇸🇬 Singapore</option>
+              <option value="NL" data-code="+31" data-lang="nl" data-currency="€">🇳🇱 Netherlands</option>
+              <option value="BE" data-code="+32" data-lang="nl" data-currency="€">🇧🇪 Belgium</option>
+              <option value="CH" data-code="+41" data-lang="de" data-currency="CHF">🇨🇭 Switzerland</option>
+              <option value="PT" data-code="+351" data-lang="pt" data-currency="€">🇵🇹 Portugal</option>
+              <option value="IE" data-code="+353" data-lang="en" data-currency="€">🇮🇪 Ireland</option>
+              <option value="ZA" data-code="+27" data-lang="en" data-currency="R">🇿🇦 South Africa</option>
+            </select>
+            <span class="form-hint">This will auto-configure phone codes, currency, and language</span>
+          </div>
+
+          <div class="form-group" id="languageGroup">
+            <label class="form-label">
+              Website Language
+            </label>
+            <select class="form-select" id="websiteLanguage">
+              <option value="en">English</option>
+              <option value="es">Español (Spanish)</option>
+              <option value="fr">Français (French)</option>
+              <option value="de">Deutsch (German)</option>
+              <option value="it">Italiano (Italian)</option>
+              <option value="pt">Português (Portuguese)</option>
+              <option value="nl">Nederlands (Dutch)</option>
+              <option value="ja">日本語 (Japanese)</option>
+              <option value="zh">中文 (Chinese)</option>
+            </select>
+            <span class="form-hint">Auto-set based on your country (you can change it)</span>
+          </div>
+
           <!-- Business Information -->
-          <h3 class="form-section-title">📋 Business Information</h3>
+          <h3 class="form-section-title">📋 Your Information</h3>
           
           <div class="form-group">
             <label class="form-label">
@@ -729,8 +1627,26 @@
             <label class="form-label">
               Phone Number <span class="form-required">*</span>
             </label>
-            <input type="tel" class="form-input" id="clientPhone" placeholder="+1 (555) 123-4567" required>
-            <span class="form-hint">Include country code (e.g., +1 for US, +44 for UK, +52 for Mexico). For quick questions during setup.</span>
+            <div class="phone-input-wrapper">
+              <span class="country-code-display" id="clientCountryCodeDisplay">+1</span>
+              <input type="hidden" id="clientCountryCode" value="+1">
+              <input type="tel" class="phone-number-input" id="clientPhone" placeholder="555 123 4567" required>
+            </div>
+            <span class="form-hint">Your contact number (code auto-set from country)</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Business Phone Number
+            </label>
+            <div class="phone-input-wrapper">
+              <span class="country-code-display" id="businessCountryCodeDisplay">+1</span>
+              <input type="hidden" id="businessCountryCode" value="+1">
+              
+              <input type="tel" class="phone-number-input" id="businessPhone" placeholder="555 987 6543">
+              <button type="button" class="copy-phone-btn" id="copyClientPhoneBtn">Use Same as Above</button>
+            </div>
+            <span class="form-hint">Business phone (shown on website)</span>
           </div>
 
           <div class="form-group">
@@ -865,6 +1781,7 @@
                   <option value="Zacatecas">Zacatecas</option>
                 </optgroup>
               </select>
+              
               <select class="form-select" id="businessTown" required disabled>
                 <option value="">Select Town/City</option>
               </select>
@@ -874,10 +1791,10 @@
 
           <div class="form-group">
             <label class="form-label">
-              Business Phone Number
+              Currency Symbol
             </label>
-            <input type="tel" class="form-input" id="businessPhone" placeholder="+1 (555) 987-6543">
-            <span class="form-hint">Include country code (e.g., +1 for US, +44 for UK, +52 for Mexico). This will show on your booking website.</span>
+            <input type="text" class="form-input" id="currencySymbol" placeholder="$" maxlength="5">
+            <span class="form-hint">Currency symbol for pricing (e.g., $, €, £, ¥). Auto-filled based on location, but can be edited.</span>
           </div>
 
           <!-- Branding -->
@@ -972,6 +1889,41 @@
             <span class="form-hint">Use a good quality image (we'll handle formatting, transparency, etc.)</span>
           </div>
 
+          <div class="form-group">
+            <label class="form-label">
+              Tagline / Slogan
+            </label>
+            <input type="text" class="form-input" id="businessTagline" placeholder="Clean cuts. No wait." value="Clean cuts. No wait.">
+            <span class="form-hint">Your business tagline that appears below your business name</span>
+          </div>
+
+          <!-- Social Media -->
+          <h3 class="form-section-title">📱 Social Media <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(100% OPTIONAL)</span></h3>
+          
+          <div class="form-group">
+            <label class="form-label">
+              Instagram <span style="color: #94a3b8; font-size: 12px; font-weight: normal;">(OPTIONAL)</span>
+            </label>
+            <input type="text" class="form-input" id="instagramHandle" placeholder="@yourhandle or yourhandle">
+            <span class="form-hint">Your Instagram username (e.g., @yourhandle). <strong>100% OPTIONAL</strong> - leave blank if you don't have one.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Facebook <span style="color: #94a3b8; font-size: 12px; font-weight: normal;">(OPTIONAL)</span>
+            </label>
+            <input type="text" class="form-input" id="facebookHandle" placeholder="Your Facebook page name or URL">
+            <span class="form-hint">Your Facebook page name or URL. <strong>100% OPTIONAL</strong> - leave blank if you don't have one.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              TikTok <span style="color: #94a3b8; font-size: 12px; font-weight: normal;">(OPTIONAL)</span>
+            </label>
+            <input type="text" class="form-input" id="tiktokHandle" placeholder="@yourhandle or yourhandle">
+            <span class="form-hint">Your TikTok username (e.g., @yourhandle). <strong>100% OPTIONAL</strong> - leave blank if you don't have one.</span>
+          </div>
+
           <!-- Services -->
           <h3 class="form-section-title">✂️ Services You Offer</h3>
           
@@ -1004,18 +1956,22 @@
             <h4 style="color: #667eea; font-size: 20px; margin-bottom: 12px;">📞 Open Communication</h4>
             <p style="color: #e2e8f0; line-height: 1.6; font-size: 16px;">
               After you submit this form, we'll reach out within 24 hours to discuss your needs in detail. 
-              This form is just a jumpstart—we'll work closely with you to make sure everything is perfect!
+              This form is just a jumpstart, we'll work closely with you to make sure everything is perfect!
             </p>
           </div>
 
           <!-- Submit Button -->
           <button type="submit" class="submit-button" id="submitButton">
-            🚀 Submit My Request
+            Submit My Request
           </button>
         </form>
 
-        <!-- Success Message (hidden by default) -->
+      </div>
+
+      <!-- Success Popup (hidden by default) -->
+      <div class="success-popup-overlay" id="successPopupOverlay">
         <div class="success-message" id="successMessage">
+          <button class="success-close" onclick="closeSuccessPopup()">×</button>
           <div class="success-icon">✅</div>
           <h2 class="success-title">Order Received!</h2>
           <p class="success-text">
@@ -1047,7 +2003,7 @@
 
         <div style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px;">
           <p style="color: #10b981; font-size: 13px; margin: 0; text-align: center;">
-            ✨ This is EXACTLY what your website will look like!
+            This is a preview to give you an idea of the system. Your final website will be customized to your exact needs!
           </p>
         </div>
       </div>
@@ -1058,11 +2014,291 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   
+  <!-- Footer with Contact Form -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <h3 class="footer-title">Contact Us</h3>
+      <p style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #cccccc; margin-bottom: 30px;">Questions? We're here to help!</p>
+      
+      <form class="contact-form" id="contactForm">
+        <div class="contact-form-group">
+          <label class="contact-form-label" for="contactName">Your Name *</label>
+          <input type="text" class="contact-form-input" id="contactName" placeholder="John Doe" required>
+        </div>
+        
+        <div class="contact-form-group">
+          <label class="contact-form-label" for="contactEmail">Your Email *</label>
+          <input type="email" class="contact-form-input" id="contactEmail" placeholder="john@example.com" required>
+        </div>
+        
+        <div class="contact-form-group">
+          <label class="contact-form-label" for="contactMessage">Message *</label>
+          <textarea class="contact-form-textarea" id="contactMessage" placeholder="Tell us how we can help..." required></textarea>
+        </div>
+        
+        <button type="submit" class="contact-form-submit" id="contactSubmitBtn">Send Message</button>
+        
+        <div class="contact-form-success" id="contactSuccess">
+          ✅ Message sent! We'll get back to you soon.
+        </div>
+      </form>
+    </div>
+  </footer>
+
+      <!-- Popup Notifications -->
+      <div class="popup-overlay" id="successPopup">
+        <div class="popup-content popup-success">
+          <button class="popup-close" onclick="closePopup('successPopup')">×</button>
+          <div class="popup-icon">✅</div>
+          <div class="popup-message">Success! Your message has been sent.</div>
+        </div>
+      </div>
+
+      <div class="popup-overlay" id="errorPopup">
+        <div class="popup-content popup-error">
+          <button class="popup-close" onclick="closePopup('errorPopup')">×</button>
+          <div class="popup-icon">❌</div>
+          <div class="popup-message" id="errorMessage">Something went wrong. Please try again.</div>
+        </div>
+      </div>
+
   <!-- Firebase Config -->
   <script src="firebase-admin-config.js"></script>
 
   <!-- Form Handling -->
   <script>
+    // Contact form handling - wait for scripts to load
+    let contactFormInitAttempts = 0;
+    const MAX_INIT_ATTEMPTS = 10;
+
+    function initContactForm() {
+      contactFormInitAttempts++;
+      const contactForm = document.getElementById('contactForm');
+      const contactSubmitBtn = document.getElementById('contactSubmitBtn');
+      const contactSuccess = document.getElementById('contactSuccess');
+
+      if (!contactForm) {
+        if (contactFormInitAttempts < MAX_INIT_ATTEMPTS) {
+          setTimeout(initContactForm, 500);
+        }
+        return;
+      }
+
+      // Check if saveContactMessage is available (check both window and global scope)
+      const hasSaveFunction = typeof window.saveContactMessage !== 'undefined' || typeof saveContactMessage !== 'undefined';
+      
+      if (!hasSaveFunction) {
+        if (contactFormInitAttempts < MAX_INIT_ATTEMPTS) {
+          console.warn(`⚠️ saveContactMessage not available yet, retrying... (${contactFormInitAttempts}/${MAX_INIT_ATTEMPTS})`);
+          setTimeout(initContactForm, 500);
+        } else {
+          console.error('❌ saveContactMessage failed to load after multiple attempts, creating fallback');
+          // Fallback: define the function inline if it's not available
+          if (typeof firebase !== 'undefined' && firebase.firestore) {
+            window.saveContactMessage = async function(formData) {
+              try {
+                const db = firebase.firestore();
+                const message = {
+                  name: formData.name,
+                  email: formData.email,
+                  message: formData.message,
+                  submittedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                  status: 'new',
+                  readAt: null
+                };
+                const docRef = await db.collection('contact_messages').add(message);
+                console.log('✅ Contact message saved with ID:', docRef.id);
+                return { success: true, id: docRef.id };
+              } catch (error) {
+                console.error('❌ Error saving contact message:', error);
+                return { success: false, error: error.message };
+              }
+            };
+            console.log('✅ Created fallback saveContactMessage function');
+            // Continue to set up the form handler
+          } else {
+            console.error('❌ Firebase not available, cannot create fallback');
+            return;
+          }
+        }
+        return;
+      }
+
+      // Popup notification functions
+      function showSuccessPopup() {
+        const popup = document.getElementById('successPopup');
+        if (!popup) {
+          console.error('❌ Success popup element not found');
+          return;
+        }
+        console.log('✅ Showing success popup');
+        popup.classList.add('show');
+        
+        // Close on overlay click (outside the popup)
+        const closeOnOverlay = function(e) {
+          if (e.target === popup) {
+            closePopup('successPopup');
+            popup.removeEventListener('click', closeOnOverlay);
+          }
+        };
+        popup.addEventListener('click', closeOnOverlay);
+        
+        // Prevent clicks inside popup content from closing
+        const popupContent = popup.querySelector('.popup-content');
+        if (popupContent) {
+          popupContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        }
+      }
+
+      function showErrorPopup(message) {
+        const popup = document.getElementById('errorPopup');
+        const messageEl = document.getElementById('errorMessage');
+        if (!popup) {
+          console.error('❌ Error popup element not found');
+          alert(message || 'Something went wrong. Please try again.'); // Fallback to alert
+          return;
+        }
+        if (messageEl) {
+          messageEl.textContent = message || 'Something went wrong. Please try again.';
+        }
+        console.log('❌ Showing error popup:', message);
+        popup.classList.add('show');
+        
+        // Close on overlay click (outside the popup)
+        const closeOnOverlay = function(e) {
+          if (e.target === popup) {
+            closePopup('errorPopup');
+            popup.removeEventListener('click', closeOnOverlay);
+          }
+        };
+        popup.addEventListener('click', closeOnOverlay);
+        
+        // Prevent clicks inside popup content from closing
+        const popupContent = popup.querySelector('.popup-content');
+        if (popupContent) {
+          popupContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        }
+      }
+
+      // Close popup function (called by X button or outside click)
+      function closePopup(popupId) {
+        const popup = document.getElementById(popupId);
+        if (popup) {
+          popup.classList.remove('show');
+        }
+      }
+
+      // Close success popup and optionally reset form
+      function closeSuccessPopup() {
+        const popup = document.getElementById('successPopupOverlay');
+        if (popup) {
+          popup.classList.remove('show');
+        }
+        // Optionally scroll to top or reset form
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Make popup functions globally accessible
+      window.closePopup = closePopup;
+      window.closeSuccessPopup = closeSuccessPopup;
+      window.showErrorPopup = showErrorPopup;
+      window.showSuccessPopup = showSuccessPopup;
+
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = contactSubmitBtn;
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const formData = {
+            name: document.getElementById('contactName').value.trim(),
+            email: document.getElementById('contactEmail').value.trim(),
+            message: document.getElementById('contactMessage').value.trim()
+          };
+
+          // Validate
+          if (!formData.name || !formData.email || !formData.message) {
+            throw new Error('Please fill in all fields');
+          }
+
+          // Check if Firebase and saveContactMessage are available
+          if (typeof firebase === 'undefined' || !firebase.firestore) {
+            throw new Error('Firebase is not loaded. Please refresh the page.');
+          }
+
+          // Use window.saveContactMessage if available, otherwise fallback to global
+          const saveFn = window.saveContactMessage || saveContactMessage;
+          
+          if (typeof saveFn !== 'function') {
+            throw new Error('Contact form service is not available. Please refresh the page.');
+          }
+
+          console.log('📤 Sending contact message...', formData);
+
+          // Save to Firestore
+          const result = await saveFn(formData);
+
+          console.log('📥 Result:', result);
+
+          if (result.success) {
+            console.log('✅ Success! Showing popup...');
+            // Show success popup
+            showSuccessPopup();
+            
+            // Also show inline success message
+            contactForm.style.display = 'none';
+            contactSuccess.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            console.log('✅ Contact message sent successfully!');
+          } else {
+            throw new Error(result.error || 'Failed to send message');
+          }
+        } catch (error) {
+          console.error('❌ Contact form error:', error);
+          console.error('Error details:', error.message);
+          if (error.stack) {
+            console.error('Stack:', error.stack);
+          }
+          
+          // Show error popup
+          console.log('❌ Error! Showing error popup...');
+          showErrorPopup(error.message || 'There was an error sending your message. Please try again.');
+          
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    }
+
+    // Initialize contact form when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initContactForm, 1000); // Wait for scripts to load
+      });
+    } else {
+      setTimeout(initContactForm, 1000); // Scripts may still be loading
+    }
+
+    // Test popup visibility on page load (for debugging)
+    window.addEventListener('load', () => {
+      const successPopup = document.getElementById('successPopup');
+      const errorPopup = document.getElementById('errorPopup');
+      console.log('🔍 Popup elements check:', {
+        successPopup: successPopup ? 'found' : 'NOT FOUND',
+        errorPopup: errorPopup ? 'found' : 'NOT FOUND'
+      });
+    });
+
     // Scroll to form
     function scrollToForm() {
       document.getElementById('formSection').scrollIntoView({ 
@@ -1077,13 +2313,13 @@
     function handleFileSelect(file) {
       // Validate file type
       if (!file.type.startsWith('image/')) {
-        alert('Please select an image file');
+        showErrorPopup('Please select an image file (PNG, JPG, etc.)');
         return;
       }
 
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        alert('Image size must be less than 5MB');
+        showErrorPopup('Image size must be less than 5MB. Please choose a smaller file.');
         return;
       }
 
@@ -1274,10 +2510,261 @@
       'Zacatecas': ['Zacatecas', 'Fresnillo', 'Guadalupe', 'Jerez']
     };
 
+    // Currency mapping by state/country
+    const currencyByState = {
+      // United States - USD
+      'AL': '$', 'AK': '$', 'AZ': '$', 'AR': '$', 'CA': '$', 'CO': '$', 'CT': '$', 'DE': '$',
+      'FL': '$', 'GA': '$', 'HI': '$', 'ID': '$', 'IL': '$', 'IN': '$', 'IA': '$', 'KS': '$',
+      'KY': '$', 'LA': '$', 'ME': '$', 'MD': '$', 'MA': '$', 'MI': '$', 'MN': '$', 'MS': '$',
+      'MO': '$', 'MT': '$', 'NE': '$', 'NV': '$', 'NH': '$', 'NJ': '$', 'NM': '$', 'NY': '$',
+      'NC': '$', 'ND': '$', 'OH': '$', 'OK': '$', 'OR': '$', 'PA': '$', 'RI': '$', 'SC': '$',
+      'SD': '$', 'TN': '$', 'TX': '$', 'UT': '$', 'VT': '$', 'VA': '$', 'WA-US': '$', 'WV': '$',
+      'WI': '$', 'WY': '$',
+      // Australia - AUD
+      'NSW': '$', 'VIC': '$', 'QLD': '$', 'WA-AU': '$', 'SA': '$', 'TAS': '$', 'ACT': '$', 'NT-AU': '$',
+      // Canada - CAD
+      'AB': '$', 'BC': '$', 'MB': '$', 'NB': '$', 'NL': '$', 'NS': '$', 'ON': '$', 'PE': '$',
+      'QC': '$', 'SK': '$', 'NT-CA': '$', 'YT': '$', 'NU': '$',
+      // United Kingdom - GBP
+      'England': '£', 'Scotland': '£', 'Wales': '£', 'Northern Ireland': '£',
+      // Mexico - MXN
+      'Aguascalientes': '$', 'Baja California': '$', 'Baja California Sur': '$', 'Campeche': '$',
+      'Chiapas': '$', 'Chihuahua': '$', 'Coahuila': '$', 'Colima': '$', 'Durango': '$', 'Guanajuato': '$',
+      'Guerrero': '$', 'Hidalgo': '$', 'Jalisco': '$', 'México': '$', 'Michoacán': '$', 'Morelos': '$',
+      'Nayarit': '$', 'Nuevo León': '$', 'Oaxaca': '$', 'Puebla': '$', 'Querétaro': '$', 'Quintana Roo': '$',
+      'San Luis Potosí': '$', 'Sinaloa': '$', 'Sonora': '$', 'Tabasco': '$', 'Tamaulipas': '$', 'Tlaxcala': '$',
+      'Veracruz': '$', 'Yucatán': '$', 'Zacatecas': '$'
+    };
+
+    // Country data with states/regions and cities
+    const countryRegions = {
+      'US': citiesByState, // Use existing US states data
+      'CA': {
+        'Ontario': ['Toronto', 'Ottawa', 'Mississauga', 'Hamilton', 'Brampton', 'London', 'Markham'],
+        'Quebec': ['Montreal', 'Quebec City', 'Laval', 'Gatineau', 'Longueuil'],
+        'British Columbia': ['Vancouver', 'Victoria', 'Surrey', 'Burnaby', 'Richmond', 'Kelowna'],
+        'Alberta': ['Calgary', 'Edmonton', 'Red Deer', 'Lethbridge', 'Medicine Hat'],
+        'Manitoba': ['Winnipeg', 'Brandon', 'Steinbach'],
+        'Saskatchewan': ['Saskatoon', 'Regina', 'Prince Albert'],
+        'Nova Scotia': ['Halifax', 'Sydney', 'Dartmouth'],
+        'New Brunswick': ['Moncton', 'Saint John', 'Fredericton']
+      },
+      'AU': {
+        'New South Wales': ['Sydney', 'Newcastle', 'Wollongong', 'Central Coast', 'Coffs Harbour'],
+        'Victoria': ['Melbourne', 'Geelong', 'Ballarat', 'Bendigo', 'Shepparton'],
+        'Queensland': ['Brisbane', 'Gold Coast', 'Sunshine Coast', 'Townsville', 'Cairns'],
+        'Western Australia': ['Perth', 'Fremantle', 'Bunbury', 'Geraldton'],
+        'South Australia': ['Adelaide', 'Mount Gambier', 'Whyalla'],
+        'Tasmania': ['Hobart', 'Launceston', 'Devonport'],
+        'ACT': ['Canberra'],
+        'Northern Territory': ['Darwin', 'Alice Springs']
+      },
+      'GB': {
+        'England': ['London', 'Manchester', 'Birmingham', 'Liverpool', 'Leeds', 'Sheffield', 'Bristol', 'Newcastle'],
+        'Scotland': ['Edinburgh', 'Glasgow', 'Aberdeen', 'Dundee', 'Inverness'],
+        'Wales': ['Cardiff', 'Swansea', 'Newport', 'Wrexham'],
+        'Northern Ireland': ['Belfast', 'Derry', 'Lisburn', 'Newry']
+      },
+      'MX': {
+        'Ciudad de México': ['Mexico City'],
+        'Jalisco': ['Guadalajara', 'Zapopan', 'Tlaquepaque', 'Puerto Vallarta'],
+        'Nuevo León': ['Monterrey', 'San Pedro Garza García', 'Apodaca'],
+        'Quintana Roo': ['Cancún', 'Playa del Carmen', 'Tulum', 'Chetumal'],
+        'Yucatán': ['Mérida', 'Valladolid', 'Progreso'],
+        'Baja California': ['Tijuana', 'Mexicali', 'Ensenada'],
+        'Puebla': ['Puebla', 'Cholula', 'Atlixco']
+      },
+      'NZ': {
+        'Auckland': ['Auckland', 'North Shore', 'Manukau', 'Waitakere'],
+        'Wellington': ['Wellington', 'Lower Hutt', 'Upper Hutt', 'Porirua'],
+        'Canterbury': ['Christchurch', 'Timaru', 'Ashburton'],
+        'Waikato': ['Hamilton', 'Tauranga', 'Rotorua'],
+        'Otago': ['Dunedin', 'Queenstown', 'Oamaru']
+      },
+      'FR': {
+        'Île-de-France': ['Paris', 'Boulogne-Billancourt', 'Versailles', 'Saint-Denis'],
+        'Provence-Alpes-Côte d\'Azur': ['Marseille', 'Nice', 'Toulon', 'Cannes'],
+        'Auvergne-Rhône-Alpes': ['Lyon', 'Grenoble', 'Saint-Étienne'],
+        'Nouvelle-Aquitaine': ['Bordeaux', 'Limoges', 'Pau'],
+        'Occitanie': ['Toulouse', 'Montpellier', 'Nîmes']
+      },
+      'DE': {
+        'Bavaria': ['Munich', 'Nuremberg', 'Augsburg', 'Regensburg'],
+        'Berlin': ['Berlin'],
+        'Hamburg': ['Hamburg'],
+        'North Rhine-Westphalia': ['Cologne', 'Düsseldorf', 'Dortmund', 'Essen', 'Bonn'],
+        'Baden-Württemberg': ['Stuttgart', 'Mannheim', 'Karlsruhe', 'Freiburg'],
+        'Hesse': ['Frankfurt', 'Wiesbaden', 'Kassel']
+      },
+      'ES': {
+        'Madrid': ['Madrid', 'Alcalá de Henares', 'Getafe'],
+        'Catalonia': ['Barcelona', 'Tarragona', 'Girona', 'Lleida'],
+        'Andalusia': ['Seville', 'Málaga', 'Granada', 'Córdoba'],
+        'Valencia': ['Valencia', 'Alicante', 'Castellón'],
+        'Basque Country': ['Bilbao', 'San Sebastián', 'Vitoria-Gasteiz']
+      },
+      'IT': {
+        'Lombardy': ['Milan', 'Bergamo', 'Brescia', 'Como'],
+        'Lazio': ['Rome', 'Latina', 'Frosinone'],
+        'Campania': ['Naples', 'Salerno', 'Caserta'],
+        'Veneto': ['Venice', 'Verona', 'Padua', 'Vicenza'],
+        'Tuscany': ['Florence', 'Pisa', 'Siena', 'Livorno'],
+        'Piedmont': ['Turin', 'Novara', 'Alessandria']
+      },
+      'BR': {
+        'São Paulo': ['São Paulo', 'Campinas', 'Santos', 'Ribeirão Preto'],
+        'Rio de Janeiro': ['Rio de Janeiro', 'Niterói', 'Petrópolis'],
+        'Minas Gerais': ['Belo Horizonte', 'Uberlândia', 'Ouro Preto'],
+        'Bahia': ['Salvador', 'Feira de Santana'],
+        'Rio Grande do Sul': ['Porto Alegre', 'Gramado', 'Caxias do Sul']
+      },
+      'AR': {
+        'Buenos Aires': ['Buenos Aires', 'La Plata', 'Mar del Plata'],
+        'Córdoba': ['Córdoba', 'Villa Carlos Paz'],
+        'Santa Fe': ['Rosario', 'Santa Fe'],
+        'Mendoza': ['Mendoza', 'San Rafael']
+      },
+      'CL': {
+        'Santiago Metropolitan': ['Santiago', 'Puente Alto', 'Las Condes'],
+        'Valparaíso': ['Valparaíso', 'Viña del Mar'],
+        'Biobío': ['Concepción', 'Talcahuano'],
+        'Araucanía': ['Temuco', 'Pucón']
+      },
+      'CO': {
+        'Bogotá D.C.': ['Bogotá'],
+        'Antioquia': ['Medellín', 'Envigado', 'Bello'],
+        'Valle del Cauca': ['Cali', 'Buenaventura'],
+        'Atlántico': ['Barranquilla', 'Soledad']
+      },
+      'JP': {
+        'Tokyo': ['Tokyo', 'Shibuya', 'Shinjuku', 'Minato'],
+        'Osaka': ['Osaka', 'Sakai', 'Higashiosaka'],
+        'Kanagawa': ['Yokohama', 'Kawasaki', 'Kamakura'],
+        'Aichi': ['Nagoya', 'Toyota', 'Okazaki'],
+        'Kyoto': ['Kyoto', 'Uji']
+      },
+      'CN': {
+        'Beijing': ['Beijing'],
+        'Shanghai': ['Shanghai'],
+        'Guangdong': ['Guangzhou', 'Shenzhen', 'Dongguan'],
+        'Zhejiang': ['Hangzhou', 'Ningbo'],
+        'Jiangsu': ['Nanjing', 'Suzhou', 'Wuxi']
+      },
+      'IN': {
+        'Maharashtra': ['Mumbai', 'Pune', 'Nagpur', 'Nashik'],
+        'Delhi': ['New Delhi', 'Delhi'],
+        'Karnataka': ['Bangalore', 'Mysore', 'Mangalore'],
+        'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai'],
+        'West Bengal': ['Kolkata', 'Howrah'],
+        'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara']
+      },
+      'SG': {
+        'Singapore': ['Singapore Central', 'Orchard', 'Marina Bay', 'Jurong', 'Tampines']
+      },
+      'NL': {
+        'North Holland': ['Amsterdam', 'Haarlem', 'Zaandam'],
+        'South Holland': ['Rotterdam', 'The Hague', 'Leiden', 'Delft'],
+        'Utrecht': ['Utrecht', 'Amersfoort'],
+        'North Brabant': ['Eindhoven', 'Tilburg', 'Breda']
+      },
+      'BE': {
+        'Brussels': ['Brussels'],
+        'Flanders': ['Antwerp', 'Ghent', 'Bruges', 'Leuven'],
+        'Wallonia': ['Liège', 'Charleroi', 'Namur']
+      },
+      'CH': {
+        'Zurich': ['Zurich', 'Winterthur'],
+        'Geneva': ['Geneva', 'Carouge'],
+        'Bern': ['Bern', 'Biel'],
+        'Basel': ['Basel'],
+        'Vaud': ['Lausanne', 'Montreux']
+      },
+      'PT': {
+        'Lisbon': ['Lisbon', 'Sintra', 'Cascais', 'Amadora'],
+        'Porto': ['Porto', 'Vila Nova de Gaia', 'Matosinhos'],
+        'Algarve': ['Faro', 'Albufeira', 'Lagos']
+      },
+      'IE': {
+        'Dublin': ['Dublin', 'Dún Laoghaire', 'Swords'],
+        'Cork': ['Cork', 'Cobh'],
+        'Galway': ['Galway'],
+        'Limerick': ['Limerick']
+      },
+      'ZA': {
+        'Gauteng': ['Johannesburg', 'Pretoria', 'Sandton', 'Soweto'],
+        'Western Cape': ['Cape Town', 'Stellenbosch', 'Paarl'],
+        'KwaZulu-Natal': ['Durban', 'Pietermaritzburg'],
+        'Eastern Cape': ['Port Elizabeth', 'East London']
+      }
+    };
+
+    // Handle country selector changes
+    document.addEventListener('DOMContentLoaded', () => {
+      const countrySelect = document.getElementById('businessCountry');
+      const languageSelect = document.getElementById('websiteLanguage');
+      const clientCodeDisplay = document.getElementById('clientCountryCodeDisplay');
+      const businessCodeDisplay = document.getElementById('businessCountryCodeDisplay');
+      const clientCodeHidden = document.getElementById('clientCountryCode');
+      const businessCodeHidden = document.getElementById('businessCountryCode');
+      const currencyInput = document.getElementById('currencySymbol');
+      const stateSelect = document.getElementById('businessState');
+      const townSelect = document.getElementById('businessTown');
+
+      // Handle country selection change
+      if (countrySelect) {
+        countrySelect.addEventListener('change', (e) => {
+          const selectedOption = e.target.options[e.target.selectedIndex];
+          const countryCode = e.target.value;
+          const phoneCode = selectedOption.getAttribute('data-code');
+          const language = selectedOption.getAttribute('data-lang');
+          const currency = selectedOption.getAttribute('data-currency');
+
+          // Update language
+          if (languageSelect && language) {
+            languageSelect.value = language;
+          }
+
+          // Update phone codes for both personal and business
+          if (phoneCode) {
+            if (clientCodeDisplay) clientCodeDisplay.textContent = phoneCode;
+            if (businessCodeDisplay) businessCodeDisplay.textContent = phoneCode;
+            if (clientCodeHidden) clientCodeHidden.value = phoneCode;
+            if (businessCodeHidden) businessCodeHidden.value = phoneCode;
+          }
+
+          // Update currency
+          if (currencyInput && currency) {
+            currencyInput.value = currency;
+            updateCurrencySymbolsInServices();
+          }
+
+          // Update location dropdown based on country
+          if (stateSelect) {
+            stateSelect.innerHTML = '<option value="">Select State/Province</option>';
+            townSelect.innerHTML = '<option value="">Select Town/City</option>';
+            townSelect.disabled = true;
+
+            if (countryCode && countryRegions[countryCode]) {
+              const regions = countryRegions[countryCode];
+              Object.keys(regions).forEach(region => {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region;
+                stateSelect.appendChild(option);
+              });
+            }
+          }
+
+          updatePreview();
+        });
+      }
+    });
+
     // Initialize location dropdowns
     document.addEventListener('DOMContentLoaded', () => {
       const stateSelect = document.getElementById('businessState');
       const townSelect = document.getElementById('businessTown');
+      const currencyInput = document.getElementById('currencySymbol');
 
       if (!stateSelect || !townSelect) return;
 
@@ -1285,20 +2772,39 @@
       stateSelect.addEventListener('change', (e) => {
         const selectedState = e.target.value;
         const townSelect = document.getElementById('businessTown');
+        const countrySelect = document.getElementById('businessCountry');
+        const selectedCountry = countrySelect ? countrySelect.value : 'US';
         
         // Clear and disable town dropdown
         townSelect.innerHTML = '<option value="">Select Town/City</option>';
         townSelect.disabled = !selectedState;
 
         // Populate towns if state is selected
-        if (selectedState && citiesByState[selectedState]) {
-          citiesByState[selectedState].forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            townSelect.appendChild(option);
-          });
-          townSelect.disabled = false;
+        if (selectedState) {
+          let regionData = null;
+          
+          // Get the correct region data based on country
+          if (countryRegions[selectedCountry]) {
+            regionData = countryRegions[selectedCountry][selectedState];
+          } else if (citiesByState[selectedState]) {
+            regionData = citiesByState[selectedState]; // Fallback to US data
+          }
+
+          if (regionData) {
+            regionData.forEach(city => {
+              const option = document.createElement('option');
+              option.value = city;
+              option.textContent = city;
+              townSelect.appendChild(option);
+            });
+            townSelect.disabled = false;
+          }
+        }
+        
+        // Auto-fill currency symbol based on state
+        if (currencyInput && selectedState && currencyByState[selectedState]) {
+          currencyInput.value = currencyByState[selectedState];
+          updateCurrencySymbolsInServices();
         }
         
         // Reset town selection
@@ -1306,18 +2812,178 @@
         updatePreview();
       });
 
+      // Update currency symbols in all service items when currency changes
+      if (currencyInput) {
+        currencyInput.addEventListener('input', () => {
+          updateCurrencySymbolsInServices();
+          updatePreview();
+        });
+      }
+
       // Handle town selection
       townSelect.addEventListener('change', () => {
         updatePreview();
       });
     });
 
+    // Phone number formatting
+    function formatPhoneNumber(phone, countryCode) {
+      // Remove all non-digits
+      const digits = phone.replace(/\D/g, '');
+      
+      // Format based on country code
+      if (countryCode === '+1') {
+        // US/Canada: (555) 123-4567
+        if (digits.length <= 3) return digits;
+        if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+        return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
+      } else if (countryCode === '+44') {
+        // UK: 020 1234 5678
+        if (digits.length <= 3) return digits;
+        if (digits.length <= 6) return `${digits.slice(0, 3)} ${digits.slice(3)}`;
+        return `${digits.slice(0, 3)} ${digits.slice(3, 7)} ${digits.slice(7, 11)}`;
+      } else if (countryCode === '+61') {
+        // Australia: 04XX XXX XXX (mobile) or (0A) BBBB BBBB (landline)
+        if (digits.length === 0) return '';
+        // Mobile numbers start with 04
+        if (digits.startsWith('04') || digits.length === 10) {
+          // Mobile: 04XX XXX XXX
+          if (digits.length <= 4) return digits;
+          if (digits.length <= 7) return `${digits.slice(0, 4)} ${digits.slice(4)}`;
+          return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7, 10)}`;
+        } else {
+          // Landline: (0A) BBBB BBBB
+          if (digits.length <= 2) return digits;
+          if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+          return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)} ${digits.slice(6, 10)}`;
+        }
+      } else if (countryCode === '+52') {
+        // Mexico: 55 1234 5678
+        if (digits.length <= 2) return digits;
+        if (digits.length <= 6) return `${digits.slice(0, 2)} ${digits.slice(2)}`;
+        return `${digits.slice(0, 2)} ${digits.slice(2, 6)} ${digits.slice(6, 10)}`;
+      } else {
+        // Default: space every 3-4 digits
+        if (digits.length <= 3) return digits;
+        if (digits.length <= 6) return `${digits.slice(0, 3)} ${digits.slice(3)}`;
+        if (digits.length <= 9) return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+        return `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6, 9)} ${digits.slice(9, 12)}`;
+      }
+    }
+
+    function getFormattedPhoneNumber(countryCodeInput, phoneInput) {
+      const countryCode = countryCodeInput ? countryCodeInput.value : '+1';
+      let phone = phoneInput ? phoneInput.value : '';
+      if (!phone) return '';
+      
+      // Remove all non-digits for processing
+      const digits = phone.replace(/\D/g, '');
+      
+      // For Australian numbers with country code, drop leading 0
+      if (countryCode === '+61' && digits.startsWith('0')) {
+        phone = digits.substring(1); // Remove leading 0
+        // Format as 4XX XXX XXX (without the leading 0)
+        if (phone.length <= 3) return `${countryCode} ${phone}`;
+        if (phone.length <= 6) return `${countryCode} ${phone.slice(0, 3)} ${phone.slice(3)}`;
+        return `${countryCode} ${phone.slice(0, 3)} ${phone.slice(3, 6)} ${phone.slice(6, 9)}`;
+      }
+      
+      // For other countries, use the formatted version
+      return `${countryCode} ${formatPhoneNumber(phone, countryCode)}`;
+    }
+
+    // Initialize phone number formatting
+    document.addEventListener('DOMContentLoaded', () => {
+      const clientCountryCode = document.getElementById('clientCountryCode');
+      const clientPhone = document.getElementById('clientPhone');
+      const businessCountryCode = document.getElementById('businessCountryCode');
+      const businessPhone = document.getElementById('businessPhone');
+
+      // Client phone formatting
+      if (clientPhone && clientCountryCode) {
+        clientPhone.addEventListener('input', (e) => {
+          const formatted = formatPhoneNumber(e.target.value, clientCountryCode.value);
+          e.target.value = formatted;
+          updatePreview();
+        });
+
+        clientCountryCode.addEventListener('change', () => {
+          const formatted = formatPhoneNumber(clientPhone.value, clientCountryCode.value);
+          clientPhone.value = formatted;
+          updatePreview();
+        });
+      }
+
+      // Business phone formatting
+      if (businessPhone && businessCountryCode) {
+        businessPhone.addEventListener('input', (e) => {
+          const formatted = formatPhoneNumber(e.target.value, businessCountryCode.value);
+          e.target.value = formatted;
+          updatePreview();
+        });
+
+        businessCountryCode.addEventListener('change', () => {
+          const formatted = formatPhoneNumber(businessPhone.value, businessCountryCode.value);
+          businessPhone.value = formatted;
+          updatePreview();
+        });
+      }
+
+      // Copy client phone to business phone
+      const copyPhoneBtn = document.getElementById('copyClientPhoneBtn');
+      if (copyPhoneBtn && clientPhone && clientCountryCode && businessPhone && businessCountryCode) {
+        copyPhoneBtn.addEventListener('click', () => {
+          // Copy country code
+          businessCountryCode.value = clientCountryCode.value;
+          
+          // Copy phone number (just the digits, then format)
+          const clientPhoneDigits = clientPhone.value.replace(/\D/g, '');
+          const formatted = formatPhoneNumber(clientPhoneDigits, businessCountryCode.value);
+          businessPhone.value = formatted;
+          
+          // Trigger change event to update preview
+          businessCountryCode.dispatchEvent(new Event('change'));
+          updatePreview();
+        });
+      }
+    });
+
     // Services management
     let serviceCounter = 0;
+
+    function getCurrencySymbol() {
+      const currencyInput = document.getElementById('currencySymbol');
+      return currencyInput ? (currencyInput.value.trim() || '$') : '$';
+    }
 
     function addServiceItem(name = '', duration = '', price = '') {
       const container = document.getElementById('servicesContainer');
       const serviceId = `service-${serviceCounter++}`;
+      const currencySymbol = getCurrencySymbol();
+      
+      // Extract just the number from price if it contains currency symbol
+      let priceValue = price;
+      if (price && (price.includes('$') || price.includes('£') || price.includes('€') || price.includes('¥'))) {
+        priceValue = price.replace(/[^\d.]/g, '');
+      }
+      
+      // Extract number and unit from duration
+      let durationValue = duration;
+      let durationUnit = 'min';
+      if (duration) {
+        // Try to extract unit (min, mins, minute, minutes, hr, hrs, hour, hours)
+        const durationLower = duration.toLowerCase().trim();
+        if (durationLower.includes('hour') || durationLower.includes('hr')) {
+          durationUnit = 'hr';
+          durationValue = duration.replace(/[^\d.]/g, '');
+        } else if (durationLower.includes('min') || durationLower.includes('minute')) {
+          durationUnit = 'min';
+          durationValue = duration.replace(/[^\d.]/g, '');
+        } else {
+          // If no unit found, assume minutes
+          durationValue = duration.replace(/[^\d.]/g, '');
+        }
+      }
       
       const serviceItem = document.createElement('div');
       serviceItem.className = 'service-item';
@@ -1330,11 +2996,22 @@
         </div>
         <div class="service-input-group">
           <label class="service-input-label">Duration</label>
-          <input type="text" class="service-input" data-field="duration" placeholder="e.g., 30 min" value="${duration}" required>
+          <div class="duration-input-wrapper">
+            <input type="text" class="duration-input" data-field="duration" data-service-id="${serviceId}" placeholder="30" value="${durationValue}" required>
+            <select class="duration-unit-select" data-field="duration-unit" data-service-id="${serviceId}">
+              <option value="min" ${durationUnit === 'min' ? 'selected' : ''}>min</option>
+              <option value="hr" ${durationUnit === 'hr' ? 'selected' : ''}>hr</option>
+            </select>
+          </div>
+          <span class="form-hint" style="font-size: 11px; margin-top: 4px; display: block;">Enter only the number</span>
         </div>
         <div class="service-input-group">
           <label class="service-input-label">Price</label>
-          <input type="text" class="service-input" data-field="price" placeholder="e.g., $25" value="${price}" required>
+          <div class="price-input-wrapper">
+            <span class="currency-prefix" data-currency="${serviceId}">${currencySymbol}</span>
+            <input type="text" class="price-input" data-field="price" data-service-id="${serviceId}" placeholder="25" value="${priceValue}" required>
+          </div>
+          <span class="form-hint" style="font-size: 11px; margin-top: 4px; display: block;">Enter only the number</span>
         </div>
         <button type="button" class="remove-service-btn" onclick="removeService('${serviceId}')">×</button>
       `;
@@ -1342,9 +3019,15 @@
       container.appendChild(serviceItem);
       
       // Add event listeners for live preview
-      serviceItem.querySelectorAll('.service-input').forEach(input => {
+      serviceItem.querySelectorAll('.service-input, .price-input, .duration-input').forEach(input => {
         input.addEventListener('input', updatePreview);
       });
+      
+      // Add event listener for duration unit dropdown
+      const durationUnitSelect = serviceItem.querySelector('.duration-unit-select');
+      if (durationUnitSelect) {
+        durationUnitSelect.addEventListener('change', updatePreview);
+      }
       
       updatePreview();
     }
@@ -1357,17 +3040,35 @@
       }
     }
 
+    function updateCurrencySymbolsInServices() {
+      const currencySymbol = getCurrencySymbol();
+      const currencyPrefixes = document.querySelectorAll('.currency-prefix');
+      currencyPrefixes.forEach(prefix => {
+        prefix.textContent = currencySymbol;
+      });
+    }
+
     function getServices() {
       const services = [];
       const serviceItems = document.querySelectorAll('.service-item');
+      const currencySymbol = getCurrencySymbol();
       
       serviceItems.forEach(item => {
         const name = item.querySelector('[data-field="name"]').value.trim();
-        const duration = item.querySelector('[data-field="duration"]').value.trim();
-        const price = item.querySelector('[data-field="price"]').value.trim();
+        const durationInput = item.querySelector('[data-field="duration"]');
+        const durationUnitSelect = item.querySelector('[data-field="duration-unit"]');
+        const priceInput = item.querySelector('[data-field="price"]');
         
-        if (name && duration && price) {
-          services.push({ name, duration, price });
+        const durationValue = durationInput ? durationInput.value.trim() : '';
+        const durationUnit = durationUnitSelect ? durationUnitSelect.value : 'min';
+        const priceValue = priceInput ? priceInput.value.trim() : '';
+        
+        if (name && durationValue && priceValue) {
+          // Format duration with unit
+          const formattedDuration = `${durationValue} ${durationUnit}`;
+          // Format price with currency symbol
+          const formattedPrice = `${currencySymbol}${priceValue}`;
+          services.push({ name, duration: formattedDuration, price: formattedPrice });
         }
       });
       
@@ -1385,6 +3086,11 @@
         
         // Add first service by default
         addServiceItem();
+        
+        // Update currency symbols in services on initial load
+        setTimeout(() => {
+          updateCurrencySymbolsInServices();
+        }, 100);
       }
     });
 
@@ -1393,9 +3099,17 @@
       const businessName = document.getElementById('businessName').value || 'Your Business';
       const primaryColor = document.getElementById('primaryColor').value;
       const secondaryColor = document.getElementById('secondaryColor').value;
-      const businessPhone = document.getElementById('businessPhone').value || '0402098123';
+      const businessCountryCodeEl = document.getElementById('businessCountryCode');
+      const businessPhoneEl = document.getElementById('businessPhone');
+      const businessPhone = businessPhoneEl && businessCountryCodeEl 
+        ? getFormattedPhoneNumber(businessCountryCodeEl, businessPhoneEl) 
+        : '+61 402 098 123';
       const fontStyle = document.getElementById('fontStyle').value || 'modern';
       const businessLogo = logoDataURL; // Use stored data URL
+      const businessTagline = document.getElementById('businessTagline') ? document.getElementById('businessTagline').value.trim() || 'Clean cuts. No wait.' : 'Clean cuts. No wait.';
+      const instagramHandle = document.getElementById('instagramHandle') ? document.getElementById('instagramHandle').value.trim() : '';
+      const facebookHandle = document.getElementById('facebookHandle') ? document.getElementById('facebookHandle').value.trim() : '';
+      const tiktokHandle = document.getElementById('tiktokHandle') ? document.getElementById('tiktokHandle').value.trim() : '';
 
       // Map font styles to actual fonts
       const fontMap = {
@@ -1478,9 +3192,9 @@
             ${businessLogo ? `<img src="${businessLogo}" alt="${businessName}" style="height: 30px; width: auto; object-fit: contain;">` : '💈'} ${businessName}
           </div>
           <div style="display: flex; gap: 15px; font-size: 11px;">
-            <a href="#" style="color: white; text-decoration: none;">About</a>
-            <a href="#" style="color: white; text-decoration: none;">Book</a>
-            <a href="#" style="color: white; text-decoration: none;">Contact</a>
+            <a href="javascript:void(0)" style="color: white; text-decoration: none; pointer-events: none; cursor: default;">About</a>
+            <a href="javascript:void(0)" style="color: white; text-decoration: none; pointer-events: none; cursor: default;">Book</a>
+            <a href="javascript:void(0)" style="color: white; text-decoration: none; pointer-events: none; cursor: default;">Contact</a>
           </div>
         </div>
 
@@ -1490,7 +3204,7 @@
             ${businessLogo ? `<img src="${businessLogo}" alt="${businessName}" style="max-width: 90%; max-height: 90%; object-fit: contain;">` : '💈'}
           </div>
           <h1 style="font-size: 28px; color: white; margin-bottom: 12px; font-weight: bold;">${businessName}</h1>
-          <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 20px;">Clean cuts. No wait.</p>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 20px;">${businessTagline}</p>
           <button style="padding: 12px 30px; background: ${secondaryColor}; color: white; border: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer;">
             Book Now
           </button>
@@ -1527,8 +3241,24 @@
 
         <!-- Footer -->
         <div style="background: #111; padding: 25px 20px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 20px;">
-          <p style="margin: 0 0 8px 0;">Contact: ${businessPhone}</p>
-          <p style="margin: 0;">Follow us on social media</p>
+          <h3 style="font-size: 14px; color: ${primaryColor}; margin-bottom: 15px; font-family: 'Press Start 2P', monospace;">Contact Us</h3>
+          <p style="margin: 0 0 20px 0; font-size: 11px;">Questions? We're here to help!</p>
+          <div style="max-width: 500px; margin: 0 auto; background: rgba(102, 126, 234, 0.05); padding: 20px; border-radius: 8px; border: 2px solid rgba(102, 126, 234, 0.2);">
+            <input type="text" placeholder="Your Name" disabled style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 5px; background: rgba(255,255,255,0.9); font-size: 13px; box-sizing: border-box;">
+            <input type="email" placeholder="Your Email" disabled style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 5px; background: rgba(255,255,255,0.9); font-size: 13px; box-sizing: border-box;">
+            <textarea placeholder="Your Message" disabled style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 5px; background: rgba(255,255,255,0.9); font-size: 13px; min-height: 80px; resize: none; box-sizing: border-box;"></textarea>
+            <button disabled style="width: 100%; padding: 12px; background: ${secondaryColor}; color: white; border: none; border-radius: 5px; font-size: 13px; font-weight: bold; cursor: default;">Send Message</button>
+          </div>
+          ${instagramHandle || facebookHandle || tiktokHandle ? `
+            <div style="margin-top: 20px;">
+              <p style="margin: 0 0 10px 0;">Follow us on social media</p>
+              <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                ${instagramHandle ? `<a href="javascript:void(0)" style="color: ${primaryColor}; text-decoration: none; font-weight: 600; pointer-events: none; cursor: default;">📷 Instagram</a>` : ''}
+                ${facebookHandle ? `<a href="javascript:void(0)" style="color: ${primaryColor}; text-decoration: none; font-weight: 600; pointer-events: none; cursor: default;">👥 Facebook</a>` : ''}
+                ${tiktokHandle ? `<a href="javascript:void(0)" style="color: ${primaryColor}; text-decoration: none; font-weight: 600; pointer-events: none; cursor: default;">🎵 TikTok</a>` : ''}
+              </div>
+            </div>
+          ` : ''}
         </div>
       `;
     }
@@ -1560,7 +3290,7 @@
     });
 
     // Update preview on all relevant field changes
-    ['businessName', 'businessPhone', 'fontStyle'].forEach(id => {
+    ['businessName', 'businessPhone', 'fontStyle', 'businessTagline', 'instagramHandle', 'facebookHandle', 'tiktokHandle'].forEach(id => {
       const element = document.getElementById(id);
       if (element) {
         element.addEventListener('input', updatePreview);
@@ -1619,7 +3349,7 @@
         
         // If there are errors, show them all at once
         if (errors.length > 0) {
-          alert('Please complete the following fields:\n\n' + errors.join('\n'));
+          showErrorPopup('Please complete the following fields:\n\n' + errors.join('\n'));
           submitButton.disabled = false;
           submitButton.textContent = originalText;
           
@@ -1640,20 +3370,35 @@
           // Client contact
           clientName: document.getElementById('clientName').value.trim(),
           clientEmail: document.getElementById('clientEmail').value.trim(),
-          clientPhone: document.getElementById('clientPhone').value.trim(),
+          clientCountryCode: document.getElementById('clientCountryCode').value,
+          clientPhone: getFormattedPhoneNumber(
+            document.getElementById('clientCountryCode'),
+            document.getElementById('clientPhone')
+          ),
           
           // Business info
           businessName: document.getElementById('businessName').value.trim(),
           businessState: document.getElementById('businessState').value,
           businessTown: document.getElementById('businessTown').value,
           businessLocation: `${document.getElementById('businessTown').value}, ${document.getElementById('businessState').value}`.trim(),
-          businessPhone: document.getElementById('businessPhone').value.trim(),
+          businessCountryCode: document.getElementById('businessCountryCode').value,
+          businessPhone: getFormattedPhoneNumber(
+            document.getElementById('businessCountryCode'),
+            document.getElementById('businessPhone')
+          ),
+          currencySymbol: document.getElementById('currencySymbol').value.trim() || '$',
           
           // Branding
           primaryColor: document.getElementById('primaryColor').value,
           secondaryColor: document.getElementById('secondaryColor').value,
           fontStyle: document.getElementById('fontStyle').value,
           businessLogo: logoDataURL, // Use stored data URL
+          businessTagline: document.getElementById('businessTagline') ? document.getElementById('businessTagline').value.trim() || 'Clean cuts. No wait.' : 'Clean cuts. No wait.',
+          
+          // Social Media (all optional)
+          instagramHandle: document.getElementById('instagramHandle') ? document.getElementById('instagramHandle').value.trim() : '',
+          facebookHandle: document.getElementById('facebookHandle') ? document.getElementById('facebookHandle').value.trim() : '',
+          tiktokHandle: document.getElementById('tiktokHandle') ? document.getElementById('tiktokHandle').value.trim() : '',
           
           // Services - now structured array
           services: services,
@@ -1666,10 +3411,16 @@
         const result = await saveClientSubmission(formData);
         
         if (result.success) {
-          // Show success message immediately
+          // Show success popup
           document.getElementById('confirmEmail').textContent = formData.clientEmail;
-          document.getElementById('clientOrderForm').style.display = 'none';
-          document.getElementById('successMessage').classList.add('show');
+          document.getElementById('successPopupOverlay').classList.add('show');
+          
+          // Add click outside to close
+          document.getElementById('successPopupOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'successPopupOverlay') {
+              closeSuccessPopup();
+            }
+          });
           
           // Email notification will be sent automatically by Firebase Function
           // (configured in functions/index.js)
@@ -1681,7 +3432,7 @@
         
       } catch (error) {
         console.error('❌ Submission error:', error);
-        alert('There was an error submitting your order. Please try again or contact us directly.');
+        showErrorPopup('There was an error submitting your order. Please try again or contact us directly.');
         submitButton.disabled = false;
         submitButton.textContent = originalText;
       }
